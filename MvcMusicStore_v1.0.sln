@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMusicStore_v1.0", "MvcMusicStore_v1.0\MvcMusicStore_v1.0.csproj", "{1005898E-375C-4EEB-84A9-3A5B869280D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMusicStore_v1", "MvcMusicStore_v1.0\MvcMusicStore_v1.csproj", "{1005898E-375C-4EEB-84A9-3A5B869280D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

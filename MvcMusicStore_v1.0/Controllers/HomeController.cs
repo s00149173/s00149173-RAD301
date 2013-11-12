@@ -11,9 +11,17 @@ namespace MvcMusicStore_v1._0.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index()
+        private MvcMusicStoreEntities db = new MvcMusicStoreEntities();
+
+        protected override void Dispose(bool disposing)
         {
-            return View();
+            db.Dispose();
+        }
+
+        public ActionResult Index(int id = 0)
+        {
+            var orders = db.Orders;
+            return View(orders);
         }
 
         //
@@ -101,5 +109,12 @@ namespace MvcMusicStore_v1._0.Controllers
                 return View();
             }
         }
+
     }
 }
+
+
+
+/*var orders = db.Orders
+				.Where(or => displayOption.NameToSearch == null || or.FirstName.Contains(displayOption.NameToSearch))
+				.OrderBy(o => o.FirstName);*/
