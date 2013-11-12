@@ -18,10 +18,16 @@ namespace MvcMusicStore_v1._0.Controllers
             db.Dispose();
         }
 
-        public ActionResult Index(int id = 0)
+        public ActionResult Index(string searchString)
         {
-            var orders = db.Orders;
-            return View(orders);
+            if (searchString == null)
+            {
+                var orders = db.Orders;
+                return View(orders);
+            }
+            
+            var searchResult = db.Orders.Where(o => o.FirstName.Contains(searchString) || o.LastName.Contains(searchString));
+            return View(searchResult);
         }
 
         //
