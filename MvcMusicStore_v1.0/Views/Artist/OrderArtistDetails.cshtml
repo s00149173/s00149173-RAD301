@@ -1,0 +1,29 @@
+﻿@model MvcMusicStore_v1._0.Artist
+
+@{
+    ViewBag.Title = "Details of the Artist";
+}
+
+@section featured{
+
+    <h1>@ViewBag.Title</h1>
+    <h2>@ViewBag.Message</h2>
+}
+
+<fieldset>
+    <legend>Artist</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+    <div>
+        @Html.ActionLink("Back to Albuns", "OrderAlbums", "Album", new {orderId = -1}, new { @class = "btn btn-primary" })
+    </div>
+</fieldset>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id=Model.ArtistId }) |
+    @Html.ActionLink("Back to List", "Index")*@
+</p>

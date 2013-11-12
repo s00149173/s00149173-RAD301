@@ -45,15 +45,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td>
+        <td>    
             @Html.DisplayFor(modelItem => item.AlbumArtUrl)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AlbumId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AlbumId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AlbumId })
+            @Html.ActionLink("Artist Details","OrderArtistDetails","Artist",new {id=item.ArtistId}, new {@class="btn btn-primary"})
         </td>
     </tr>
 }
 
 </table>
+
+    <tr>
+        @Html.ActionLink("Back to Orders List","Index","Home",null, new {@class="btn btn-primary"})
+    </tr>

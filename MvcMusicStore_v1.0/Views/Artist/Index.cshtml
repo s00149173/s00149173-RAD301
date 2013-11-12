@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MvcMusicStore_v1._0.Artist>
+
+@{
+    ViewBag.Title = "List of All the Artists";
+}
+
+@section featured{
+
+    <h1>@ViewBag.Title</h1>
+    <h2>@ViewBag.Message</h2>
+}
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        
+    </tr>
+}
+
+</table>

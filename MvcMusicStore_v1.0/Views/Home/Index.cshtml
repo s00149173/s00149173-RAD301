@@ -30,6 +30,14 @@
 
 <table class="table table-striped table-hover">
 
+    <container>
+        @Html.ActionLink("Sort by Date","SortByDate","Home",null, new {@class="btn btn-primary"})
+    @*    @Html.ActionLink("Sort by First Name","SortByFirstName","Home",null, new {@class="btn btn-primary"})
+        @Html.ActionLink("Sort by Last Name","SortByLastName","Home",null, new {@class="btn btn-primary"})*@
+        @Html.ActionLink("Sort by Value", "SortByValue", "Home", null, new {@class="btn btn-primary"})
+    </container>
+    <td></td>
+
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.OrderDate)
@@ -113,7 +121,7 @@
         <td>
 
             <a class="btn btn-xs btn-info" href="@Url.Action("OrderAlbums","Album",new {orderId=item.OrderId})">Albums
-                    <span class="badge"> 100 @*@item.Albums.Count*@</span>
+                    <span class="badge"> @item.OrderDetails.Where(od => od.OrderId == @item.OrderId).Count()</span>
                 </a>
         </td>
     </tr>

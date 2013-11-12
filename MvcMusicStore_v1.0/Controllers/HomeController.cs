@@ -12,6 +12,8 @@ namespace MvcMusicStore_v1._0.Controllers
         // GET: /Home/
 
         private MvcMusicStoreEntities db = new MvcMusicStoreEntities();
+        private static int Date = 1;
+        private static int Value = 1;
 
         protected override void Dispose(bool disposing)
         {
@@ -25,9 +27,42 @@ namespace MvcMusicStore_v1._0.Controllers
                 var orders = db.Orders;
                 return View(orders);
             }
-            
             var searchResult = db.Orders.Where(o => o.FirstName.Contains(searchString) || o.LastName.Contains(searchString));
             return View(searchResult);
+        }
+
+        public ActionResult SortByDate()
+        {
+            var sortedOrdersByData= db.Orders.OrderBy(o => o.OrderDate);
+            if (Date % 2 == 0)
+            {
+                sortedOrdersByData = db.Orders.OrderByDescending(o => o.OrderDate);
+             }
+            Date++;
+            return View("Index", sortedOrdersByData);
+        }
+
+        /*public ActionResult SortByFirstName()
+        {
+            var sortedOrdersByFirstName = db.Orders.OrderBy(o => o.FirstName);
+            return View("Index", sortedOrdersByFirstName);
+        }
+
+        public ActionResult SortByLastName()
+        {
+            var sortedOrdersByLastName = db.Orders.OrderBy(o => o.LastName);
+            return View("Index", sortedOrdersByLastName);
+        }*/
+
+        public ActionResult SortByValue()
+        {
+            var sortedOrdersByValue = db.Orders.OrderBy(o => o.Total);
+            if (Value % 2 == 0)
+            {
+                sortedOrdersByValue = db.Orders.OrderByDescending(o => o.Total);
+            }
+            Value++;
+            return View("Index", sortedOrdersByValue);
         }
 
         //
@@ -119,8 +154,3 @@ namespace MvcMusicStore_v1._0.Controllers
     }
 }
 
-
-
-/*var orders = db.Orders
-				.Where(or => displayOption.NameToSearch == null || or.FirstName.Contains(displayOption.NameToSearch))
-				.OrderBy(o => o.FirstName);*/

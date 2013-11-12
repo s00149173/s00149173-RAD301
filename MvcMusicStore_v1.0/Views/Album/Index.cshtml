@@ -11,12 +11,13 @@
     <h2>@ViewBag.Message</h2>
 }
 <table class="table table-striped table-hover">
+
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Genre.Name)
+            @Html.DisplayNameFor(model => model.Genre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Artist.Name)
+            @Html.DisplayNameFor(model => model.Artist)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -48,9 +49,7 @@
             @Html.DisplayFor(modelItem => item.AlbumArtUrl)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AlbumId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AlbumId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AlbumId })
+            @Html.ActionLink("Artist Details","Details","Artist",new {id=item.ArtistId}, new {@class="btn btn-primary"})
         </td>
     </tr>
 }

@@ -138,6 +138,7 @@
       <DependentUpon>musicdb.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\ArtistController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>musicdb.tt</DependentUpon>
@@ -288,13 +289,18 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Albums.cshtml" />
     <Content Include="Views\Album\Index.cshtml" />
     <Content Include="Views\Album\Details.cshtml" />
     <Content Include="Views\Album\Create.cshtml" />
     <Content Include="Views\Album\Edit.cshtml" />
     <Content Include="Views\Album\Delete.cshtml" />
     <Content Include="Views\Album\OrderAlbums.cshtml" />
+    <Content Include="Views\Artist\Index.cshtml" />
+    <Content Include="Views\Artist\Details.cshtml" />
+    <Content Include="Views\Artist\Create.cshtml" />
+    <Content Include="Views\Artist\Edit.cshtml" />
+    <Content Include="Views\Artist\Delete.cshtml" />
+    <Content Include="Views\Artist\OrderArtistDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

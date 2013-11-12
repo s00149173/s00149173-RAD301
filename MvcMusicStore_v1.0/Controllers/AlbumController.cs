@@ -12,11 +12,14 @@ namespace MvcMusicStore_v1._0.Controllers
     {
         private MvcMusicStoreEntities db = new MvcMusicStoreEntities();
 
+        private static int previousOrderId=0;
+
         //
         // GET: /Album/
 
         public ActionResult Index()
         {
+
             var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre);
             return View(albums.ToList());
         }
@@ -24,19 +27,24 @@ namespace MvcMusicStore_v1._0.Controllers
 
         public ActionResult OrderAlbums(int orderId)
         {
-            /*var albunsArtist = from orders in db.Orders
-                               join ordersDetails in db.OrderDetails on
-                               new { orders.OrderId } equals new { ordersDetails.OrderId }
-                               join albums in db.Albums on
-                               new { ordersDetails.AlbumId } equals new { albums.AlbumId }
-                               where orders.OrderId == orderId
-                               select ordersDetails.Album;
-
-
-            return View(albunsArtist);*/
-            var orderDetails = db.OrderDetails.Where(od => od.OrderId == orderId);
-            var albums = from od in db.OrderDetails
+            int odId = -1;
+            if (orderId == -1)
+            {
+                odId = previousOrderId;
+            }
+            else
+            {
+                odId = orderId;
+                previousOrderId = orderId;
+            }
+            var albums = from o in db.Orders
+                         join od in db.OrderDetails on
+                         new { o.OrderId } equals new { od.OrderId }
+                         join al in db.Albums on
+                         new { od.AlbumId } equals new { al.AlbumId }
+                         where o.OrderId == odId
                          select od.Album;
+                         
 
             return View(albums);
         }
