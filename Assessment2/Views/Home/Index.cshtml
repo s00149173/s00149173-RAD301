@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Assessment2.Order>
+
+@{
+    ViewBag.Title = "List of Orders";
+}
+
+@section featured 
+{
+    <h1>@ViewBag.Title</h1>
+}
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.CompanyName)
+        </th>
+        <th>
+            
+            @Html.DisplayNameFor(model => model.Employee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequiredDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipVia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Freight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipAddress)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.FirstName) 
+            @Html.DisplayFor(modelItem => item.Employee.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequiredDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShippedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shipper.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Freight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipName)
+        <p>
+            @Html.DisplayFor(modelItem => item.ShipAddress),
+            @Html.DisplayFor(modelItem => item.ShipRegion)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.ShipPostalCode) - 
+            @Html.DisplayFor(modelItem => item.ShipCity)
+        </p>
+            @Html.DisplayFor(modelItem => item.ShipCountry)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,110 @@
+﻿@model Assessment2.Order
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Order</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Customer.CompanyName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Customer.CompanyName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Employee.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Employee.LastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OrderDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OrderDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RequiredDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RequiredDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShippedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShippedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Shipper.CompanyName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Shipper.CompanyName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Freight)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Freight)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShipName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShipName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShipAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShipAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShipCity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShipCity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShipRegion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShipRegion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShipPostalCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShipPostalCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShipCountry)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShipCountry)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

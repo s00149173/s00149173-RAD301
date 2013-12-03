@@ -1,0 +1,134 @@
+﻿@model Assessment2.Order
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Order</legend>
+
+        @Html.HiddenFor(model => model.OrderID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CustomerID, "Customer")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CustomerID", String.Empty)
+            @Html.ValidationMessageFor(model => model.CustomerID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmployeeID, "Employee")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("EmployeeID", String.Empty)
+            @Html.ValidationMessageFor(model => model.EmployeeID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OrderDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OrderDate)
+            @Html.ValidationMessageFor(model => model.OrderDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RequiredDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RequiredDate)
+            @Html.ValidationMessageFor(model => model.RequiredDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShippedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShippedDate)
+            @Html.ValidationMessageFor(model => model.ShippedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShipVia, "Shipper")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ShipVia", String.Empty)
+            @Html.ValidationMessageFor(model => model.ShipVia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Freight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Freight)
+            @Html.ValidationMessageFor(model => model.Freight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShipName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShipName)
+            @Html.ValidationMessageFor(model => model.ShipName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShipAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShipAddress)
+            @Html.ValidationMessageFor(model => model.ShipAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShipCity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShipCity)
+            @Html.ValidationMessageFor(model => model.ShipCity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShipRegion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShipRegion)
+            @Html.ValidationMessageFor(model => model.ShipRegion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShipPostalCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShipPostalCode)
+            @Html.ValidationMessageFor(model => model.ShipPostalCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShipCountry)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShipCountry)
+            @Html.ValidationMessageFor(model => model.ShipCountry)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
