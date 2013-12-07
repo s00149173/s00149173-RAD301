@@ -120,6 +120,12 @@ namespace Assessment2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
+            var details = db.Order_Details.Where(d => d.OrderID == id).AsEnumerable();
+            foreach (var item in details)
+            {
+                db.Order_Details.Remove(item);
+            }
             Order order = db.Orders.Find(id);
             db.Orders.Remove(order);
             db.SaveChanges();

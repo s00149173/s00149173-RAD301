@@ -6,8 +6,31 @@
 
 @section featured 
 {
-    <h1>@ViewBag.Title</h1>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>@ViewBag.Title</h1>
+        </div>
+    </div>
+    
 }
+
+@section scripts
+{
+    <script>
+       function deleteOrder(orderId) {
+            $.ajax({
+                url: '@Url.Action("Delete")',
+                data: { id: orderId },
+                success: function (data) {
+                    $('#deleteModal').html(data);
+
+                }
+            });
+        }
+        
+    </script>
+}
+
 
 <table class="table table-striped table-hover">
     <tr>
@@ -15,7 +38,6 @@
             @Html.DisplayNameFor(model => model.Customer.CompanyName)
         </th>
         <th>
-            
             @Html.DisplayNameFor(model => model.Employee)
         </th>
         <th>
@@ -76,11 +98,12 @@
             @Html.DisplayFor(modelItem => item.ShipCountry)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
+            <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteOrder('@item.OrderID')">Delete</button>
         </td>
     </tr>
 }
 
 </table>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>

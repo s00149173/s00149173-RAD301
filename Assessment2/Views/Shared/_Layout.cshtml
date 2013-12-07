@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET Bootstrap 3 MVC Application</title>
+        <title>@ViewBag.Title - Marco Leite Continous Assessment 2</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
@@ -13,34 +13,28 @@
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+                            @*<span class="icon-bar"></span>*@
                         </button>
                         @Html.ActionLink("Orders Manager","Index","Home",null, new {@class="navbar-brand"})
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li>@Html.ActionLink("Orders","Index","Home")</li>
-                            <li>@Html.ActionLink("OtherLink","Index","Home")</li>
                         </ul>
                     </div><!--/.navbar-collapse -->
                 </div>
             </div>
         
-        <div class="jumbotron">
-            <div class="container">
-                @RenderSection("featured", required: false)
-            </div>
-        </div>
+        @RenderSection("featured", required: false)
+
         
         <div class="container">
             @RenderBody()
-            <footer>
-                <p>© Marco Leite 2013</p>
-            </footer>
+            
         </div>
-        
+        <footer>
+                <p>© Marco Leite 2013</p>
+        </footer>
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/jqueryval")  @* necessary for Ajax.BeginForm() *@
         @RenderSection("scripts", required: false)
