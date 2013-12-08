@@ -17,7 +17,8 @@
 @section scripts
 {
     <script>
-       function deleteOrder(orderId) {
+        //show popup window to confirm delete of Order
+        function deleteOrder(orderId) {
             $.ajax({
                 url: '@Url.Action("Delete")',
                 data: { id: orderId },
@@ -27,83 +28,102 @@
                 }
             });
         }
-        
+
+        //Show Employee Details in a popup window
+        function employeeDetails(emplId) {
+            $.ajax({
+                url: '@Url.Action("Details", "Employee")',
+                data: { id: emplId },
+                success: function (data) {
+                    $('#EmployeeDetailsModal').html(data);
+
+                }
+            });
+        }
     </script>
 }
 
 
-<table class="table table-striped table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Customer.CompanyName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RequiredDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShippedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShipVia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Freight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShipAddress)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequiredDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShipVia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Freight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShipAddress)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.CompanyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Employee.FirstName) 
-            @Html.DisplayFor(modelItem => item.Employee.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RequiredDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShippedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Shipper.CompanyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Freight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShipName)
-        <p>
-            @Html.DisplayFor(modelItem => item.ShipAddress),
-            @Html.DisplayFor(modelItem => item.ShipRegion)
-        </p>
-        <p>
-            @Html.DisplayFor(modelItem => item.ShipPostalCode) - 
-            @Html.DisplayFor(modelItem => item.ShipCity)
-        </p>
-            @Html.DisplayFor(modelItem => item.ShipCountry)
-        </td>
-        <td>
-            <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteOrder('@item.OrderID')">Delete</button>
-        </td>
-    </tr>
-}
+        @foreach (var item in Model) {
+            <tr>
 
-</table>
+                <td data-toggle="modal"  data-target="#EmployeeDetailsModal" onclick="employeeDetails('@item.EmployeeID');" style="cursor:pointer" data-toggle="tooltip" title="Click to see Employee Details">
+                    @Html.DisplayFor(modelItem => item.Customer.CompanyName)
+                </td>
+                <td data-toggle="modal"  data-target="#EmployeeDetailsModal" onclick="employeeDetails('@item.EmployeeID');" style="cursor:pointer" data-toggle="tooltip" title="Click to see Employee Details">
+                    @Html.DisplayFor(modelItem => item.Employee.FirstName) 
+                    @Html.DisplayFor(modelItem => item.Employee.LastName)
+                </td>
+                <td data-toggle="modal"  data-target="#EmployeeDetailsModal" onclick="employeeDetails('@item.EmployeeID');" style="cursor:pointer" data-toggle="tooltip" title="Click to see Employee Details">
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td data-toggle="modal"  data-target="#EmployeeDetailsModal" onclick="employeeDetails('@item.EmployeeID');" style="cursor:pointer" data-toggle="tooltip" title="Click to see Employee Details">
+                    @Html.DisplayFor(modelItem => item.RequiredDate)
+                </td>
+                <td data-toggle="modal"  data-target="#EmployeeDetailsModal" onclick="employeeDetails('@item.EmployeeID');" style="cursor:pointer" data-toggle="tooltip" title="Click to see Employee Details">
+                    @Html.DisplayFor(modelItem => item.ShippedDate)
+                </td>
+                <td data-toggle="modal"  data-target="#EmployeeDetailsModal" onclick="employeeDetails('@item.EmployeeID');" style="cursor:pointer" data-toggle="tooltip" title="Click to see Employee Details">
+                    @Html.DisplayFor(modelItem => item.Shipper.CompanyName)
+                </td>
+                <td data-toggle="modal"  data-target="#EmployeeDetailsModal" onclick="employeeDetails('@item.EmployeeID');" style="cursor:pointer" data-toggle="tooltip" title="Click to see Employee Details">
+                    @Html.DisplayFor(modelItem => item.Freight)
+                </td>
+                <td data-toggle="modal"  data-target="#EmployeeDetailsModal" onclick="employeeDetails('@item.EmployeeID');" style="cursor:pointer" data-toggle="tooltip" title="Click to see Employee Details">
+                    @Html.DisplayFor(modelItem => item.ShipName)
+                    <div>
+                        @Html.DisplayFor(modelItem => item.ShipAddress),
+                        @Html.DisplayFor(modelItem => item.ShipRegion)
+                    </div>
+                    <div>
+                        @Html.DisplayFor(modelItem => item.ShipPostalCode) - 
+                        @Html.DisplayFor(modelItem => item.ShipCity)
+                    </div>
+                    @Html.DisplayFor(modelItem => item.ShipCountry)
+                </td>
+                <td>
+                    <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" onclick="deleteOrder('@item.OrderID')" data-toggle="tooltip" title="Delete Order">Delete</button>
+
+                </td>
+            </tr>
+  
+            
+
+        }
+
+    </table>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-</div>
+</div><!-- /.modal -->
+
+<div class="modal fade" id="EmployeeDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+</div><!-- /.modal -->

@@ -1,0 +1,146 @@
+﻿@model Assessment2.Employee
+@section featured
+{
+    
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="EmployeeDetailsLabel">Employe Deatils</h4>
+       </div>
+        <div class="modal-body">
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.LastName)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.LastName)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.FirstName)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.FirstName)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.Title)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.Title)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.TitleOfCourtesy)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.TitleOfCourtesy)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.BirthDate)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.BirthDate)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.HireDate)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.HireDate)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.Address)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.Address)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.City)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.City)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.Region)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.Region)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.PostalCode)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.PostalCode)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.Country)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.Country)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.HomePhone)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.HomePhone)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.Extension)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.Extension)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.Notes)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.Notes)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.Employee1.LastName)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.Employee1.LastName)
+          </div>
+
+          <div class="display-label">
+              @Html.DisplayNameFor(model => model.PhotoPath)
+          </div>
+          <div class="display-field">
+              @Html.DisplayFor(model => model.PhotoPath)
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+
+@*
+
+
+<fieldset>
+    <legend>Employee</legend>
+
+    
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.EmployeeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

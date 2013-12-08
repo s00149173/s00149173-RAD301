@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>qTip2</id>
+    <version>2.1.1.1</version>
+    <title>qTip 2</title>
+    <authors>Craig Thompson</authors>
+    <owners>Craig Thompson</owners>
+    <projectUrl>http://qtip2.com/</projectUrl>
+    <iconUrl>http://media1.juggledesign.com/qtip2/images/owl_small.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The second generation of the advanced qTip plugin for the ever popular jQuery framework.
+
+Building on 1.0's user friendly, yet feature rich base, qTip2 provides you with tonnes of features like speech bubble tips and imagemap support, and best of all... it's completely free under the MIT/GPLv2 licenses!
+
+More documentation and information is available at the official site.</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>qTip tooltip jQuery</tags>
+    <dependencies>
+      <dependency id="jQuery" version="1.8.3" />
+    </dependencies>
+  </metadata>
+</package>
