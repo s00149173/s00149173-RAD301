@@ -21,6 +21,13 @@ namespace Assessment2.Controllers
             return View(orders.ToList());
         }
 
+        public ActionResult EmployeeOrders(int id)
+        {
+
+            var orderEmployee = db.Orders.Where(o => o.EmployeeID == id);
+            return View("Index", orderEmployee);
+        }
+
         //
         // GET: /Home/Details/5
 

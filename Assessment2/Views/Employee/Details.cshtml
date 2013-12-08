@@ -5,6 +5,25 @@
     
 }
 
+@section scripts
+{
+    <script>
+      function employeeOrders(emplId) {
+            $.ajax({
+                url: '@Url.Action("EmployeeOrders", "Home")',
+                data: { id: emplId },
+                success: function (data) {
+                    //$('#EmployeeDetailsModal').html(data);
+                    $.get("/logged-in-content.html #homeDiv", function (data) {
+                        $("#homeDiv").replaceWith(data);
+                    });
+
+                }
+            });
+    }
+        </script>
+}
+
 
 <div class="modal-dialog">
     <div class="modal-content">
@@ -89,16 +108,14 @@
             </div>
 
             <div class="display-label">
-                <b>@Html.DisplayNameFor(model => model.PhotoPath)</b>
-            </div>
-            <div class="display-field">
-                <a href="@Html.DisplayFor(model => model.PhotoPath)">Photo</a>
+                <b>@Html.DisplayNameFor(model => model.PhotoPath) :</b>
+                @Html.DisplayFor(model => model.PhotoPath)
             </div>
 
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="employeeOrders('@Html.DisplayFor(model=>model.EmployeeID)')">Employee Orders</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
