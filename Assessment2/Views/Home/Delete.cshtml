@@ -13,65 +13,81 @@
       </div>
         <div class="modal-body">
             <h3><b>Are you sure you want to delete this order?</b></h3>
-    <div>
-        <b>@Html.DisplayNameFor(model => model.Customer.CompanyName):  </b>
-        @Html.DisplayFor(model => model.Customer.CompanyName)
-    </div>
+            <div>
+                <b>@Html.DisplayNameFor(model => model.Customer.CompanyName):  </b>
+                @Html.DisplayFor(model => model.Customer.CompanyName)
+            </div>
 
-    <div>
-        <b>@Html.DisplayNameFor(model => model.Employee): </b>
-        @Html.DisplayFor(model => model.Employee.FirstName) 
-        @Html.DisplayFor(model => model.Employee.LastName)
-    </div>
+            <div>
+                <b>@Html.DisplayNameFor(model => model.Employee): </b>
+                @Html.DisplayFor(model => model.Employee.FirstName) 
+                @Html.DisplayFor(model => model.Employee.LastName)
+            </div>
 
-    <div>
-        <b>@Html.DisplayNameFor(model => model.OrderDate): </b>
-        @Html.DisplayFor(model => model.OrderDate)
-    </div>
+            <div>
+                <b>@Html.DisplayNameFor(model => model.OrderDate): </b>
+                @Html.DisplayFor(model => model.OrderDate)
+            </div>
 
-    <div>
-        <b>@Html.DisplayNameFor(model => model.RequiredDate): </b>
-        @Html.DisplayFor(model => model.RequiredDate)
-    </div>
+            <div>
+                <b>@Html.DisplayNameFor(model => model.RequiredDate): </b>
+                @Html.DisplayFor(model => model.RequiredDate)
+            </div>
 
-    <div>
-        <b>@Html.DisplayNameFor(model => model.ShippedDate): </b>
-        @Html.DisplayFor(model => model.ShippedDate)
-    </div>
+            <div>
+                <b>@Html.DisplayNameFor(model => model.ShippedDate): </b>
+                @Html.DisplayFor(model => model.ShippedDate)
+            </div>
 
-    <div>
-        <b>@Html.DisplayNameFor(model => model.ShipVia): </b>
-        @Html.DisplayFor(model => model.Shipper.CompanyName)
-    </div>
+            <div>
+                <b>@Html.DisplayNameFor(model => model.ShipVia): </b>
+                @Html.DisplayFor(model => model.Shipper.CompanyName)
+            </div>
 
-    <div>
-        <b>@Html.DisplayNameFor(model => model.Freight): </b>
-        @Html.DisplayFor(model => model.Freight)
-    </div>
+            <div>
+                <b>@Html.DisplayNameFor(model => model.Freight): </b>
+                @Html.DisplayFor(model => model.Freight)
+            </div>
+    
+            <div>
+                <b>@Html.DisplayNameFor(model => model.ShipName): </b>
+                @Html.DisplayFor(model => model.ShipName)
+            </div>                
+            <div>
+                <b>@Html.DisplayNameFor(model => model.ShipAddress): </b>
+                @Html.DisplayFor(model => model.ShipAddress)
+            </div>
+            <div>
+                <b>@Html.DisplayNameFor(model => model.ShipRegion): </b>
+                @Html.DisplayFor(model=>model.ShipRegion)
+            </div>
+            
+            <div>
+                <b>@Html.DisplayNameFor(model => model.ShipPostalCode): </b>
+                @Html.DisplayFor(model => model.ShipPostalCode)
+            </div>
+            <div>
+                <b>@Html.DisplayNameFor(model => model.ShipCity): </b>  
+                @Html.DisplayFor(model => model.ShipCity)
+            </div>
+            <div>
+                <b>@Html.DisplayNameFor(model => model.ShipCountry): </b>  
+                @Html.DisplayFor(model => model.ShipCountry)
+            </div>
+                
+            
 
-    <div>
-        <b>@Html.DisplayNameFor(model => model.ShipAddress): </b>
-
-        @Html.DisplayFor(model => model.ShipName)
-        <div>
-            @Html.DisplayFor(model => model.ShipAddress),
-            @Html.DisplayFor(model => model.ShipRegion)
-        </div>
-        <div>
-            @Html.DisplayFor(model => model.ShipPostalCode) - 
-            @Html.DisplayFor(model => model.ShipCity)
-        </div>
-            @Html.DisplayFor(model => model.ShipCountry)
-    </div>
               
         </div>
         <div class="modal-footer">
             @using (Html.BeginForm()) {
                 @Html.AntiForgeryToken()
-                <p>
-                    <input type="submit" class="btn btn-danger" value="Delete"/>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
-                </p>
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                    <input type="submit" class="btn btn-danger" value="Delete" data-toggle="tooltip" title="Delete Order"/>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="tooltip" title="Back to Orders Page">Cancel</button>
+                </div>
+                <div class="col-md-4"></div>
             }
         </div>
     </div><!-- /.modal-content -->
