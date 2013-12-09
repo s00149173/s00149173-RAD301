@@ -312,6 +312,7 @@
     <Content Include="Views\Employee\Create.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Home\_OrdersList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

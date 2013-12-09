@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 
 namespace Assessment2.Controllers
 {
@@ -17,15 +18,26 @@ namespace Assessment2.Controllers
 
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Shipper);
-            return View(orders.ToList());
+            ViewBag.Title = "List of Orders";
+            var allOrders = db.Orders.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Shipper);
+            return View(allOrders.ToList());
         }
 
         public ActionResult EmployeeOrders(int id)
         {
+            var employee = db.Employees.Where(e=>e.EmployeeID==id).Select(e => new {e.FirstName, e.LastName});
+            string name = "";
+            foreach (var item in employee)
+            {
+                name += item.FirstName;
+                name += " "+item.LastName;
+            }
+            
+            var ord = db.Orders.Where(o => o.EmployeeID == id);
+            var orders = ord.Include(o => o.Customer).Include(o => o.Employee).Include(o => o.Shipper);
 
-            var orderEmployee = db.Orders.Where(o => o.EmployeeID == id);
-            return View("Index", orderEmployee);
+            ViewBag.Title = "List of Orders associated to the Employee: " + name;
+            return View("Index", orders.OrderBy(c => c.OrderID).ToList());
         }
 
         //

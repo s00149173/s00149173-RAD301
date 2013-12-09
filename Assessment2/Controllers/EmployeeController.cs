@@ -5,6 +5,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+
 
 namespace Assessment2.Controllers
 {
@@ -33,7 +35,7 @@ namespace Assessment2.Controllers
             }
             return View(employee);
         }
-
+        
         //
         // GET: /Employee/Create
 

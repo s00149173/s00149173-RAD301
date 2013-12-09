@@ -5,120 +5,135 @@
     
 }
 
-@section scripts
-{
-    <script>
-      function employeeOrders(emplId) {
-            $.ajax({
-                url: '@Url.Action("EmployeeOrders", "Home")',
-                data: { id: emplId },
-                success: function (data) {
-                    //$('#EmployeeDetailsModal').html(data);
-                    $.get("/logged-in-content.html #homeDiv", function (data) {
-                        $("#homeDiv").replaceWith(data);
-                    });
-
-                }
-            });
-    }
-        </script>
-}
-
 
 <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="EmployeeDetailsLabel">Employe Deatils</h4>
-       </div>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="EmployeeDetailsLabel">Employe Deatils</h4>
+        </div>
         <div class="modal-body">
-            <div>
-                <b>@Html.DisplayNameFor(model => model.LastName):  </b>
-                @Html.DisplayFor(model => model.LastName)
-            </div>
-            
-            <div>
-                <b>@Html.DisplayNameFor(model => model.FirstName) :  </b>
-                @Html.DisplayFor(model => model.FirstName)
-            </div>
-            
-            <div>
-                <b>@Html.DisplayNameFor(model => model.Title):  </b>
-                @Html.DisplayFor(model => model.Title)
-            </div>
-            
-            <div>
-                <b>@Html.DisplayNameFor(model => model.TitleOfCourtesy):  </b>
-                @Html.DisplayFor(model => model.TitleOfCourtesy)
-            </div>
-            
-            <div>
-                <b>@Html.DisplayNameFor(model => model.BirthDate):  </b>
-                @Html.DisplayFor(model =>model.BirthDate)
+            <div class="col-md-7">
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.LastName):  </strong>
+                        @Html.DisplayFor(model => model.LastName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.FirstName) :  </strong>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.Title):  </strong>
+                        @Html.DisplayFor(model => model.Title)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.TitleOfCourtesy):  </strong>
+                        @Html.DisplayFor(model => model.TitleOfCourtesy)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.BirthDate):  </strong>
+                        @Html.DisplayFor(model => model.BirthDate)
                 
-            </div>
-              
-            <div>
-                <b>@Html.DisplayNameFor(model => model.HireDate):  </b>
-                @Html.DisplayFor(model => model.HireDate)
-            </div>
-              
-            <div>
-                <b>@Html.DisplayNameFor(model => model.Address): </b>
-                @Html.DisplayFor(model => model.Address)
-            </div>
-            <div>
-                <b>@Html.DisplayNameFor(model => model.Region): </b>
-                @Html.DisplayFor(model=>model.Region)
-            </div>
-            
-            <div>
-                <b>@Html.DisplayNameFor(model => model.PostalCode): </b>
-                @Html.DisplayFor(model => model.PostalCode)
-            </div>
-            <div>
-                <b>@Html.DisplayNameFor(model => model.City): </b>  
-                @Html.DisplayFor(model => model.City)
-            </div>
-            <div>
-                <b>@Html.DisplayNameFor(model => model.Country): </b>  
-                @Html.DisplayFor(model => model.Country)
-            </div>
-            
-            <div>
-                <b>@Html.DisplayNameFor(model => model.HomePhone):  </b>
-                @Html.DisplayFor(model => model.HomePhone)
-            </div>
-                 
-            <div>
-                <b>@Html.DisplayNameFor(model => model.Extension):  </b>
-                @Html.DisplayFor(model => model.Extension)
-            </div>
-                 
-            <div>
-                <b>@Html.DisplayNameFor(model => model.Notes):  </b>
-                @Html.DisplayFor(model => model.Notes)
-            </div>
-            
-            <div>
-                <b>ReportsTo:  </b>
-                @String.Format("{0} {1}",
-                    @Html.DisplayFor(model => model.Employee1.FirstName),
-                    @Html.DisplayFor(model => model.Employee1.LastName))
-            </div>
-
-            <div class="display-label">
-                <b>@Html.DisplayNameFor(model => model.PhotoPath) :</b>
-                @Html.DisplayFor(model => model.PhotoPath)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.HireDate):  </strong>
+                        @Html.DisplayFor(model => model.HireDate)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.Address): </strong>
+                        @Html.DisplayFor(model => model.Address)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.Region): </strong>
+                        @Html.DisplayFor(model => model.Region)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.PostalCode): </strong>
+                        @Html.DisplayFor(model => model.PostalCode)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.City): </strong>  
+                        @Html.DisplayFor(model => model.City)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.Country): </strong>  
+                        @Html.DisplayFor(model => model.Country)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.HomePhone):  </strong>
+                        @Html.DisplayFor(model => model.HomePhone)
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <strong>@Html.DisplayNameFor(model => model.Extension):  </strong>
+                        @Html.DisplayFor(model => model.Extension)
+                    </div>
+                </div>
+                <div class ="row">
+                    <strong>ReportsTo:  </strong>
+                    @String.Format("{0} {1}",
+                        @Html.DisplayFor(model => model.Employee1.FirstName),
+                        @Html.DisplayFor(model => model.Employee1.LastName))
+                </div>
             </div>
 
         </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="employeeOrders('@Html.DisplayFor(model=>model.EmployeeID)')">Employee Orders</button>
-      </div>
+
+        <div class="col-md-5">
+            @*http://www.nullskull.com/a/10450951/aspnet-mvc-display-images-directly-from-the-viewmodel-into-your-views.aspx*@
+            @{
+                byte[] photo = Model.Photo;
+                string imageSrc = null;
+                if (photo != null)
+                {
+                    MemoryStream ms = new MemoryStream();
+                    ms.Write(photo, 78, photo.Length - 78); // strip out 78 byte OLE header (don't need to do this for normal images)
+                    string imageBase64 = Convert.ToBase64String(ms.ToArray());
+                    imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                }
+            }
+            <img src="@imageSrc" alt="Employee Photo" border="0" />
+            <strong>@Html.DisplayNameFor(model => model.Photo)</strong>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-lg-11">
+                <strong>@Html.DisplayNameFor(model => model.Notes):  </strong>
+                @Html.DisplayFor(model => model.Notes)
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            @Html.ActionLink("Employee Orders", "EmployeeOrders", "Home", new {id = Model.EmployeeID}, new {@class = "btn btn-info"})
+        </div>
     </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+</div><!-- /.modal-dialog -->
 
 
 
