@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TourAgency.Models;
 
 namespace TourAgency.Controllers
 {
@@ -10,9 +11,11 @@ namespace TourAgency.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-            return View();
+            ViewBag.Message = "Trip List Page";
+            TourAgencyEntities db = new TourAgencyEntities();
+            var trips = db.Trips.ToList();
+            
+            return View(trips);
         }
 
         public ActionResult About()
