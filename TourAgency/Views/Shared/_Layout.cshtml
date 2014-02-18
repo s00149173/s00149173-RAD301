@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - College Database</title>
+    <title>@ViewBag.Title - Tour Agency</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -31,9 +31,14 @@
     <div class="container">
         @RenderSection("featured", required: false)
     </div>
+    <br />
     <div class="container body-content">
 
         @RenderBody()
+        
+    </div>
+
+    <div class="container">
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Tour Agency by Marco Leite</p>
@@ -41,6 +46,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

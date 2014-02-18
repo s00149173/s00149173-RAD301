@@ -9,13 +9,35 @@ namespace TourAgency.Controllers
 {
     public class HomeController : Controller
     {
+        private TourAgencyEntities db = new TourAgencyEntities();
+
         public ActionResult Index()
         {
             ViewBag.Message = "Trip List Page";
-            TourAgencyEntities db = new TourAgencyEntities();
+
             var trips = db.Trips.ToList();
-            
+
             return View(trips);
+        }
+
+        public ActionResult IndexTrip(int id)
+        {
+            var selectedTrip = db.Trips.Find(id);
+
+            if (selectedTrip != null)
+            {
+                if (selectedTrip.legs.Count > 0)
+                {
+                    var legs = selectedTrip.legs.ToList();
+                    return PartialView("_Legs", legs);
+                }
+                else
+                {
+                    ViewBag.Message = "No Legs for this Trip";
+                }
+            }
+            ViewBag.Message = "Trip not known";
+            return RedirectToAction("Index");
         }
 
         public ActionResult About()

@@ -1,63 +1,105 @@
 ﻿@model IEnumerable<TourAgency.Models.Trip>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Trips";
 }
 
-<h2>Index</h2>
+@section scripts
+{
+    <script>
+        function showLegsList(TripId) {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("IndexTrip", "Home")',
+                data: { id: TripId },
+                success: function (data) {
+                    $('#legsList').html(data);
+
+
+                }
+            });
+        }
+        </script>
+}
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.startDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.endDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.minimumguestN)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.complete)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.viable)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.startDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.endDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.minimumguestN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.complete)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.viable)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TripId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TripId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TripId })
-        </td>
-    </tr>
-}
+<div class="container col-md-7">
 
-</table>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.startDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.endDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.minimumguestN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.complete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.viable)
+            </th>
+            <th>Legs</th>
+            <th>Options</th>
+        </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.minimumguestN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.complete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.viable)
+            </td>
+            <td>
+            @if (item.legs.Count > 0)
+            {   
+                <button type="button"  class="btn btn-success" onclick="showLegsList('@item.TripId')" data-toggle="tooltip" title="Click to see the Legs">Legs
+                    <span class="badge">@item.legs.Count</span>
+                </button>
+   
+            }
+            else
+            {
+
+                    <div class="label label-danger">No Legs</div>
+            } 
+                </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TripId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TripId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TripId })
+            </td>
+        </tr>
+    }
+
+    </table>
+</div>
+<div class="container col-md-5">
+    <div class="col-md-2"></div>
+    <div id="legsList" class="col-md-10"></div>
+
+</div>
