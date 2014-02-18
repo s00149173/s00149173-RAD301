@@ -19,6 +19,17 @@
                 }
             });
         }
+
+        function guestList(LegId) {
+            $.ajax({
+                url: '@Url.Action("GuestList", "Leg")',
+                data: { id: LegId },
+                success: function (data) {
+                    $('#GuestListModal').html(data).modal("show");
+                }
+            });
+        }
+       
         </script>
 }
 
@@ -103,3 +114,8 @@
     <div id="legsList" class="col-md-10"></div>
 
 </div>
+
+
+<div class="modal fade" id="GuestListModal" tabindex="-1" role="dialog" aria-labelledby="GuestListLabel" aria-hidden="true">
+    </div>
+

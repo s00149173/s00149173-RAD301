@@ -26,24 +26,21 @@
             </div>
         </div>
     </div>
-    <br/>
-    <br/>
+    <br />
+    <br />
     <div class="container">
         @RenderSection("featured", required: false)
     </div>
     <br />
     <div class="container body-content">
-
-        @RenderBody()
         
-    </div>
+        @RenderBody()
 
-    <div class="container">
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Tour Agency by Marco Leite</p>
-        </footer>
     </div>
+    <footer class =" container ">
+        <p>&copy; @DateTime.Now.Year - Tour Agency by Marco Leite</p>
+    </footer>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")

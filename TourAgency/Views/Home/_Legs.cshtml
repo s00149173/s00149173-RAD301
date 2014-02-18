@@ -1,5 +1,14 @@
 ﻿@model IEnumerable<TourAgency.Models.Leg>
 
+@section scripts
+{
+    <script>
+        
+    </script>
+}
+
+
+
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-11">
@@ -15,10 +24,20 @@
     @foreach (var item in Model)
     { 
         <a href="#" class="list-group-item">
-            <h4 class="list-group-item-heading">From <b>@Html.DisplayFor(modelItem => item.startLocation)</b> to <b>@Html.DisplayFor(modelItem => item.endLocation)</b>.
-            </h4>
-            <p class="list-group-item-text">Starts date: <b>@Html.DisplayFor(modelItem => item.startDate)</b>.</p>
-            <p>Ends date: <b>@Html.DisplayFor(modelItem => item.endDate)</b>.</p>
+            <div class="row">
+                <div class="col-md-9">
+                    <h4 class="list-group-item-heading">From <b>@Html.DisplayFor(modelItem => item.startLocation)</b> to <b>@Html.DisplayFor(modelItem => item.endLocation)</b>.
+                    </h4>
+                    <p class="list-group-item-text">Starts date: <b>@Html.DisplayFor(modelItem => item.startDate)</b>.</p>
+                    <p>Ends date: <b>@Html.DisplayFor(modelItem => item.endDate)</b>.</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="row text-center">
+                        <button class="btn btn-primary btn-sm" data-toggle="modal"  data-target="#GuestListModal" onclick="guestList('@item.LegId');" style="cursor:pointer" data-toggle="tooltip" title="Click to see the list of Guests">Guests</button>
+                    </div>
+
+                </div>
+            </div>
         </a>
        
     }
