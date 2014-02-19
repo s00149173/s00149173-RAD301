@@ -1,18 +1,38 @@
 ﻿@model TourAgency.Models.Leg
 
-<div class="modal-dialog">
+<div class="modal-dialog" style="width: 25%;">
     <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="GuestListLabel">Guests List</h4>
-        </div>
+        @*<div class="modal-header">*@
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <br />
+        <h4 class="modal-title text-center" id="GuestListLabel">Guests List</h4>
+        @*</div>*@
         <div class="modal-body">
-            Guests List
+            <table class="table table-striped table-hover">
+                @if (Model.Guests.Count() != 0)
+                {
+                    foreach (var item in Model.Guests)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        </tr>
+                    }
+                } 
+                else
+                {
+                    <tr>
+                        <td class="alert alert-danger text-center">
+                            No Guests on this Leg
+                        </td>
+                    </tr>
+                }
+
+            </table>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            @*<button type="button" class="btn btn-primary">Save changes</button>*@
         </div>
     </div>
 </div>
-<footer class="hide"></footer>
+

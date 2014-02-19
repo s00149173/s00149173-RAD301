@@ -29,8 +29,8 @@
                 }
             });
         }
-       
-        </script>
+
+    </script>
 }
 
 
@@ -40,72 +40,61 @@
 
 <div class="container col-md-7">
 
-    <table class="table table-striped table-hover">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.startDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.endDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.minimumguestN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.complete)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.viable)
-            </th>
-            <th>Legs</th>
-            <th>Options</th>
+    <table class="table table-striped table-hover ">
+        <tr  class="text-center" >
+            <th class="text-center">Name</th>
+            <th class="text-center">Start Date</th>
+            <th class="text-center">End Date</th>
+            <th class="text-center">Nº Min guests</th>
+            <th class="text-center">Complete</th>
+            <th class="text-center">Viable</th>
+            <th class="text-center">Legs</th>
+            <th class="text-center">Options</th>
         </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.startDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.endDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.minimumguestN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.complete)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.viable)
-            </td>
-            <td>
-            @if (item.legs.Count > 0)
-            {   
-                <button type="button"  class="btn btn-success" onclick="showLegsList('@item.TripId')" data-toggle="tooltip" title="Click to see the Legs">Legs
-                    <span class="badge">@item.legs.Count</span>
-                </button>
-   
-            }
-            else
-            {
-
-                    <div class="label label-danger">No Legs</div>
-            } 
+        @foreach (var item in Model)
+        {
+            <tr onclick="showLegsList('@item.TripId')">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TripId }) |
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinimumguestN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Complete)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Viable)
+                </td>
+                <td>
+                    @if (item.Legs.Count > 0)
+                    {   
+                        <button type="button"  class="btn btn-success" onclick="showLegsList('@item.TripId')" data-toggle="tooltip" title="Click to see the Legs">
+                            Legs
+                    <span class="badge">@item.Legs.Count</span>
+                        </button>
+   
+                    }
+                    else
+                    {
+
+                        <div class="label label-danger">No Legs</div>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TripId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.TripId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.TripId })
-            </td>
-        </tr>
-    }
+                </td>
+            </tr>
+        }
 
     </table>
 </div>
@@ -117,5 +106,5 @@
 
 
 <div class="modal fade" id="GuestListModal" tabindex="-1" role="dialog" aria-labelledby="GuestListLabel" aria-hidden="true">
-    </div>
+</div>
 

@@ -26,9 +26,9 @@ namespace TourAgency.Controllers
 
             if (selectedTrip != null)
             {
-                if (selectedTrip.legs.Count > 0)
+                if (selectedTrip.Legs.Count > 0)
                 {
-                    var legs = selectedTrip.legs.ToList();
+                    var legs = selectedTrip.Legs.ToList();
                     return PartialView("_Legs", legs);
                 }
                 else

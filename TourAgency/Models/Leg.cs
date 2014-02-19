@@ -9,15 +9,15 @@ namespace TourAgency.Models
     public class Leg
     {
         public int LegId { get; set; }
-        public string startLocation { get; set; }
-        public string startCountry { get; set; }
-        public string endLocation { get; set; }
-        public string endCountry { get; set; }
+        public string StartLocation { get; set; }
+        public string StartCountry { get; set; }
+        public string EndLocation { get; set; }
+        public string EndCountry { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime startDate { get; set; }
+        public DateTime StartDate { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime endDate { get; set; }
-        public virtual ICollection<string> guests { get; set; }
-        public virtual Trip trip { get; set; }
+        public DateTime EndDate { get; set; }
+        public virtual ICollection<Guest> Guests { get; set; }
+        public virtual Trip Trip { get; set; }
     }
 }
