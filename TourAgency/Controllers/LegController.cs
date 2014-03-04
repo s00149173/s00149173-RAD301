@@ -4,12 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TourAgency.Models;
+using TourAgency.DAL;
 
 namespace TourAgency.Controllers
 {
     public class LegController : Controller
     {
-        private TourAgencyEntities db = new TourAgencyEntities();
+        private ITourAgencyRepository _repo;
+
+        public LegController(ITourAgencyRepository repo)
+        {
+            _repo = repo;
+        }
 
         public ActionResult Index()
         {
@@ -18,8 +24,8 @@ namespace TourAgency.Controllers
 
         public ActionResult GuestList(int id)
         {
-            Leg leg = db.Legs.Where(l => l.LegId == id).Cast<Leg>().First();
-            return View("_Guests", leg);
+            var guests = _repo.GetGuestByLegID(id);
+            return View("_Guests", guests);
         }
 
     }

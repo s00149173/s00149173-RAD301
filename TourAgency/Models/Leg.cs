@@ -10,14 +10,13 @@ namespace TourAgency.Models
     {
         public int LegId { get; set; }
         public string StartLocation { get; set; }
-        public string StartCountry { get; set; }
         public string EndLocation { get; set; }
-        public string EndCountry { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime StartDate { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime EndDate { get; set; }
-        public virtual ICollection<Guest> Guests { get; set; }
+        public int TripId { get; set; }
+        public virtual ICollection<GuestsOnLegs> guestsOnLegs { get; set; }
         public virtual Trip Trip { get; set; }
     }
 }

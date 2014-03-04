@@ -9,6 +9,6 @@ namespace TourAgency.Models
     {
         public int  GuestId {get; set;}
         public string Name { get; set; }
-        public virtual Leg Leg { get; set; }
+        public virtual ICollection<GuestsOnLegs> guestsOnLegs { get; set; }
     }
 }

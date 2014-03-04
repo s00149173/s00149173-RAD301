@@ -3,41 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TourAgency.DAL;
 using TourAgency.Models;
 
 namespace TourAgency.Controllers
 {
     public class HomeController : Controller
     {
-        private TourAgencyEntities db = new TourAgencyEntities();
+        private ITourAgencyRepository _repo;
 
+        public HomeController(ITourAgencyRepository repo)
+        {
+            _repo = repo;
+        }
+        
         public ActionResult Index()
         {
             ViewBag.Message = "Trip List Page";
-
-            var trips = db.Trips.ToList();
-
+            var trips = _repo.GetAllTrips().ToList();
             return View(trips);
         }
 
-        public ActionResult IndexTrip(int id)
+        public ActionResult LegsList(int id)
         {
-            var selectedTrip = db.Trips.Find(id);
-
-            if (selectedTrip != null)
-            {
-                if (selectedTrip.Legs.Count > 0)
-                {
-                    var legs = selectedTrip.Legs.ToList();
-                    return PartialView("_Legs", legs);
-                }
-                else
-                {
-                    ViewBag.Message = "No Legs for this Trip";
-                }
-            }
-            ViewBag.Message = "Trip not known";
-            return RedirectToAction("Index");
+            var legs = _repo.GetLegsByTripID(id);
+            return PartialView("_Legs", legs);
         }
 
         public ActionResult About()
@@ -52,6 +42,12 @@ namespace TourAgency.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _repo.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
