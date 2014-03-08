@@ -21,14 +21,15 @@ namespace TourAgency.DAL
             return _ctx.Trips;
         }
 
-        public IEnumerable<Leg> GetLegsByTripID(int id)
+        public IQueryable<Leg> GetLegsByTripID(int id)
         {
-            return _ctx.Trips.Find(id).Legs;
+            return _ctx.Legs.Where(shit => shit.TripId == id);
         }
 
-        public IQueryable<Guest> GetGuestByLegID(int id)
+        public IQueryable<GuestsOnLegs> GetGuestByLegID(int id)
         {
-            return _ctx.GuestsOnLegs.Where(g=>g.LegId == id).Select(g=>g.guest);
+            var guests = _ctx.GuestsOnLegs.Where(g=>g.LegId == id);
+            return guests;
         }
 
         public void Dispose()

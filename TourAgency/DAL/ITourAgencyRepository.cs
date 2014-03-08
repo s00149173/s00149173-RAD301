@@ -9,8 +9,8 @@ namespace TourAgency.DAL
     public interface ITourAgencyRepository:IDisposable
     {
         IQueryable<Trip> GetAllTrips();
-        IEnumerable<Leg> GetLegsByTripID(int id);
-        IQueryable<Guest> GetGuestByLegID(int id);
+        IQueryable<Leg> GetLegsByTripID(int id);
+        IQueryable<GuestsOnLegs> GetGuestByLegID(int id);
         
     }
 }

@@ -20,13 +20,12 @@ namespace TourAgency.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Trip List Page";
-            var trips = _repo.GetAllTrips().ToList();
-            return View(trips);
+            return View(_repo.GetAllTrips().ToList());
         }
 
         public ActionResult LegsList(int id)
         {
-            var legs = _repo.GetLegsByTripID(id);
+            var legs = _repo.GetLegsByTripID(id).ToList();
             return PartialView("_Legs", legs);
         }
 

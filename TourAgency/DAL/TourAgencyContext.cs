@@ -144,9 +144,11 @@ namespace TourAgency.DAL
                 new Guest{Name="Johanna Bowers"},
                 new Guest{Name="Mable Richardson"},
                 new Guest{Name="Jerry Stokes"},
-                new Guest{Name="Rogelio Sims"},
+                new Guest{Name="Rogelio Sims"}
 
             };
+            guests.ForEach(g => context.Guests.Add(g));
+            context.SaveChanges();
 
             var guestOnLegs = new List<GuestsOnLegs>
             {
@@ -466,9 +468,12 @@ namespace TourAgency.DAL
                 new GuestsOnLegs{LegId=42, GuestId=34},
                 new GuestsOnLegs{LegId=42, GuestId=35},
                 new GuestsOnLegs{LegId=42, GuestId=36},
-                new GuestsOnLegs{LegId=42, GuestId=37},
+                new GuestsOnLegs{LegId=42, GuestId=37}
 
             };
+
+            guestOnLegs.ForEach(g => context.GuestsOnLegs.Add(g));
+            context.SaveChanges();
            
         }
     }

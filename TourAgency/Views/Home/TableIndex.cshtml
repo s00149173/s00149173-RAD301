@@ -10,7 +10,7 @@
         function showLegsList(TripId) {
             $.ajax({
                 type: 'GET',
-                url: '@Url.Action("IndexTrip", "Home")',
+                url: '@Url.Action("LegsList", "Home")',
                 data: { id: TripId },
                 success: function (data) {
                     $('#legsList').html(data);

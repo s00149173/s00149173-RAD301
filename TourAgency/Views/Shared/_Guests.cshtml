@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TourAgency.Models.Guest>
+﻿@model IEnumerable<TourAgency.Models.GuestsOnLegs>
 
 <div class="modal-dialog" style="width: 25%;">
     <div class="modal-content">
@@ -13,17 +13,22 @@
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.guest.Name)
+                        </td>
+                    </tr>
+@*<tr>
                         if(item != null)
                         {
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.guest.Name)</td>
                         }
                         else
                         {
                             <td class="alert alert-danger text-center">No Guests on this Leg</td>
                         }
-                    </tr>
+                    </tr>*@
                 }
-              
+
             </table>
         </div>
         <div class="modal-footer">

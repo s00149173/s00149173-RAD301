@@ -7,18 +7,6 @@
 @section scripts
 {
     <script>
-        function showLegsList(TripId) {
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("LegsList", "Home")',
-                data: { id: TripId },
-                success: function (data) {
-                    $('#legsList').html(data);
-
-
-                }
-            });
-        }
 
         function guestList(LegId) {
             $.ajax({
@@ -26,6 +14,16 @@
                 data: { id: LegId },
                 success: function (data) {
                     $('#GuestListModal').html(data).modal("show");
+                }
+            });
+        }
+
+        function showLegsList(tripId) {
+            $.ajax({
+                url: '@Url.Action("LegsList")',
+                data: { id: tripId },
+                success: function (data) {
+                    $('#legsList').html(data);
                 }
             });
         }
@@ -39,52 +37,41 @@
 </p>
 
 <div class="col-md-8">
-
-
     @foreach (var item in Model)
     {
-        <div class="col-md-6">
-            <div class="row" onclick="showLegsList('@item.TripId')">
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StartDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EndDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MinimumguestN)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Complete)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Viable)
-                    </td>
-                    <td>
-                        @if (item.Legs.Count > 0)
-                        {   
-                            <button type="button"  class="btn btn-success" onclick="showLegsList('@item.TripId')" data-toggle="tooltip" title="Click to see the Legs">
-                                Legs
-                            <span class="badge">@item.Legs.Count</span>
-                            </button>
-   
-                        }
-                        else
-                        {
+        <div class="panel-heading">
+            <h3 class="panel-title"><b>@Html.DisplayFor(modelItem => item.Name)</b></h3>
+            <div class="painel-body">
 
-                            <div class="label label-danger">No Legs</div>
-                        }
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.TripId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.TripId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.TripId })
-                    </td>
-                </tr>
+                @Html.DisplayFor(modelItem => item.StartDate)
+                
+                @Html.DisplayFor(modelItem => item.EndDate)
+
+                @Html.DisplayFor(modelItem => item.MinimumguestN)
+
+                @Html.DisplayFor(modelItem => item.Complete)
+
+                @Html.DisplayFor(modelItem => item.Viable)
+                
+
+                @if (item.Legs.Count > 0)
+                {   
+                    <button class="btn btn-info btn-sm" onclick="showLegsList('@item.TripId');" style="cursor:pointer" data-toggle="tooltip" title="Click to see the list of Legs">
+                        Legs
+                                <span class="badge">@item.Legs.Count</span>
+                    </button>
+                        
+                }
+                else
+                {
+
+                    <div class="label label-danger">No Legs</div>
+                }
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.TripId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TripId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TripId })
+
 
             </div>
         </div>
@@ -92,10 +79,7 @@
 
 </div>
 
-<div class="container col-md-4">
-    @*<div class="col-md-2"></div>class="col-md-10"*@
-    <div id="legsList"></div>
-
+<div class="col-md-4" id="legsList">
 </div>
 
 
