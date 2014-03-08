@@ -32,6 +32,19 @@ namespace TourAgency.DAL
             return guests;
         }
 
+        public bool InsertTrip(Trip trip)
+        {
+            bool result = false;
+            if (trip != null)
+            {
+                _ctx.Trips.Add(trip);
+                _ctx.SaveChanges();
+                result = true;
+            }
+
+            return result;
+        }
+
         public void Dispose()
         {
             _ctx.Dispose();

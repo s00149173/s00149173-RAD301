@@ -11,6 +11,7 @@ namespace TourAgency.DAL
         IQueryable<Trip> GetAllTrips();
         IQueryable<Leg> GetLegsByTripID(int id);
         IQueryable<GuestsOnLegs> GetGuestByLegID(int id);
+        bool InsertTrip(Trip trip);
         
     }
 }

@@ -29,19 +29,101 @@ namespace TourAgency.Controllers
             return PartialView("_Legs", legs);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
+        //
+        // GET: /Trip/Create
 
+        public ActionResult Create()
+        {
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        //
+        // POST: /Trip/Create
 
-            return View();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Trip trip)
+        {
+            if (ModelState.IsValid)
+            {
+                //if (_repo.InsertTrip(trip))
+                //{
+
+                //}
+                _repo.InsertTrip(trip);
+                return RedirectToAction("Index");
+            }
+
+            return View(trip);
         }
+
+        ////
+        //// GET: /Trip/Details/5
+
+        //public ActionResult Details(int id = 0)
+        //{
+        //    Trip trip = _repo.Trips.Find(id);
+        //    if (trip == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(trip);
+        //}
+
+        ////
+        //// GET: /Trip/Edit/5
+
+        //public ActionResult Edit(int id = 0)
+        //{
+        //    Trip trip = db.Trips.Find(id);
+        //    if (trip == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(trip);
+        //}
+
+        ////
+        //// POST: /Trip/Edit/5
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(Trip trip)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(trip).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(trip);
+        //}
+
+        ////
+        //// GET: /Trip/Delete/5
+
+        //public ActionResult Delete(int id = 0)
+        //{
+        //    Trip trip = db.Trips.Find(id);
+        //    if (trip == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(trip);
+        //}
+
+        ////
+        //// POST: /Trip/Delete/5
+
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Trip trip = db.Trips.Find(id);
+        //    db.Trips.Remove(trip);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
