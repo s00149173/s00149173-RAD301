@@ -24,7 +24,7 @@ namespace TourAgency.Controllers
 
         public ActionResult GuestList(int id)
         {
-            var guests = _repo.GetGuestByLegID(id);
+            var guests = _repo.GetGuestOnLegsByLegID(id);
             return View("_Guests", guests);
         }
 

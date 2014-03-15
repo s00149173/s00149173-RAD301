@@ -29,7 +29,7 @@
                 }
             });
         }
-        
+
         function createTrip() {
             $.ajax({
                 url: '@Url.Action("Create")',
@@ -38,24 +38,21 @@
                 }
             });
         }
-        
+
     </script>
 }
 
 <div class="col-md-7">
-    <p>
-    @Html.ActionLink("Add new Trip", "Create")
-      
-</p>
 
     @foreach (var item in Model)
     {
+        
         <div class="panel-heading">
             <h3 class="panel-title"><b>@Html.DisplayFor(modelItem => item.Name)</b></h3>
             <div class="painel-body">
 
                 @Html.DisplayFor(modelItem => item.StartDate)
-                
+
                 @Html.DisplayFor(modelItem => item.EndDate)
 
                 @Html.DisplayFor(modelItem => item.MinimumguestN)
@@ -63,7 +60,7 @@
                 @Html.DisplayFor(modelItem => item.Complete)
 
                 @Html.DisplayFor(modelItem => item.Viable)
-                
+
 
                 @if (item.Legs.Count > 0)
                 {   

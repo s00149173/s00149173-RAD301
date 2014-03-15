@@ -8,49 +8,55 @@
     </script>
 }
 
+<div class="row">
+    <div class="text-center">
+        <h3>Click on a Leg to see the list of Guest</h3>
+    </div>
+</div>
 <div id="legsList">
 
 
-    
+
     <div class="list-group">
 
 
         @foreach (var item in Model)
         { 
-            <a href="Guests List" class="list-group-item" data-toggle="modal"  data-target="#GuestListModal" onclick="guestList('@item.LegId');" data-toggle="tooltip" title="Click to see the list of Guests">
+            <a href="#" class="list-group-item" data-toggle="modal"  data-target="#GuestListModal" onclick="guestList('@item.LegId');" data-toggle="tooltip" title="Click to see the list of Guests">
                 <div class="row">
-                    <div class="col-md-3">
+                    @*<div class="col-md-3">
                         <br />
-                        @*<img src="http://www.flags.net/images/largeflags/@item.StartCountry.Substring(0, 4).ToUpper()0001.GIF" alt="Country image" height="50" width="80"/>*@
-                    </div>
+                        <img src="http://www.flags.net/images/largeflags/@item.StartCountry.Substring(0, 4).ToUpper()0001.GIF" alt="Country image" height="50" width="80"/>
+                    </div>*@
 
-                    <div class="col-md-12 text-center">
-                        <h4 class="list-group-item-heading"><b>@Html.DisplayFor(modelItem => item.StartLocation)</b> to <b>@Html.DisplayFor(modelItem => item.EndLocation)</b>.
+                    <div class="col-md-8 text-center">
+                        <h4 class="list-group-item-heading">From <b>@Html.DisplayFor(modelItem => item.StartLocation)</b> to <b>@Html.DisplayFor(modelItem => item.EndLocation)</b>.
                         </h4>
-                        <p class="list-group-item-text">Begin: <b>@Html.DisplayFor(modelItem => item.StartDate)</b>.</p>
-                        <p>End: <b>@Html.DisplayFor(modelItem => item.EndDate)</b>.</p>
-
-                        @*@if (item.Guests.Count > 0)
+                        <p class="list-group-item-text">
+                            Begin: <b> @Html.DisplayFor(modelItem => item.StartDate) </b>
+                            End: <b> @Html.DisplayFor(modelItem => item.EndDate).</b>
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        @if (item.guestsOnLegs.Count > 0)
                         {   
                             <button class="btn btn-primary btn-sm" data-toggle="modal"  data-target="#GuestListModal" onclick="guestList('@item.LegId');" style="cursor:pointer" data-toggle="tooltip" title="Click to see the list of Guests">
                                 Guests
-                                <span class="badge">@item.Guests.Count</span>
+                                <span class="badge">@item.guestsOnLegs.Count</span>
                             </button>
                         }
                         else
                         {
                             <div class="label label-danger">No Guests</div>                         
                        
-                        }*@
+                        }
                     </div>
-                    <div class="col-md-3">
+                    @*<div class="col-md-3">
                         <div class="row text-center">
-
                             <br />
-                            @*<img src="http://www.flags.net/images/largeflags/@item.EndCountry.Substring(0, 4).ToUpper()0001.GIF" alt="Country image" height="50" width="80"/>*@
-
+                            <img src="http://www.flags.net/images/largeflags/@item.EndCountry.Substring(0, 4).ToUpper()0001.GIF" alt="Country image" height="50" width="80"/>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </a>
         }

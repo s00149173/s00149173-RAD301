@@ -21,7 +21,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Trips", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Add Trip", "Create", "Home")</li>
                 </ul>
             </div>
         </div>
@@ -37,9 +38,14 @@
         @RenderBody()
 
     </div>
-    <footer class =" container ">
-        <p>&copy; @DateTime.Now.Year - Tour Agency by Marco Leite</p>
-    </footer>
+    <br/>
+    <br/>
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+        <footer class =" container ">
+            <br/>
+            <p>&copy; @DateTime.Now.Year - Tour Agency by Marco Leite</p>
+        </footer>
+</div>
 
 
     @Scripts.Render("~/bundles/jquery")

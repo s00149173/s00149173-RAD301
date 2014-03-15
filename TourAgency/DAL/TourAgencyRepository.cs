@@ -26,9 +26,17 @@ namespace TourAgency.DAL
             return _ctx.Legs.Where(shit => shit.TripId == id);
         }
 
-        public IQueryable<GuestsOnLegs> GetGuestByLegID(int id)
+        public IQueryable<GuestsOnLegs> GetGuestOnLegsByLegID(int id)
         {
-            var guests = _ctx.GuestsOnLegs.Where(g=>g.LegId == id);
+            var guests = _ctx.GuestsOnLegs.Where(l => l.LegId == id);
+
+            return guests;
+        }
+
+        public IQueryable<Guest> GetGuestByLegID(int id)
+        {
+            var guests = _ctx.GuestsOnLegs.Where(l=>l.LegId == id).Select(g=>g.guest);
+
             return guests;
         }
 
