@@ -4,8 +4,10 @@
     ViewBag.Title = "Trips";
 }
 
+
 @section scripts
 {
+
     <script>
 
         function guestList(LegId) {
@@ -23,20 +25,29 @@
                 url: '@Url.Action("LegsList")',
                 data: { id: tripId },
                 success: function (data) {
-                    $('#legsList').html(data);
+                    $('#rightPanel').html(data);
                 }
             });
         }
-
+        
+        function createTrip() {
+            $.ajax({
+                url: '@Url.Action("Create")',
+                success: function (data) {
+                    $('#rightPanel').html(data);
+                }
+            });
+        }
+        
     </script>
 }
 
-
-<p>
+<div class="col-md-7">
+    <p>
     @Html.ActionLink("Add new Trip", "Create")
+      
 </p>
 
-<div class="col-md-8">
     @foreach (var item in Model)
     {
         <div class="panel-heading">
@@ -58,7 +69,7 @@
                 {   
                     <button class="btn btn-info btn-sm" onclick="showLegsList('@item.TripId');" style="cursor:pointer" data-toggle="tooltip" title="Click to see the list of Legs">
                         Legs
-                                <span class="badge">@item.Legs.Count</span>
+                        <span class="badge">@item.Legs.Count</span>
                     </button>
                         
                 }
@@ -79,8 +90,9 @@
 
 </div>
 
-<div class="col-md-4" id="legsList">
+<div class="col-md-5" id="rightPanel">
 </div>
+
 
 
 <div class="modal fade" id="GuestListModal" tabindex="-1" role="dialog" aria-labelledby="GuestListLabel" aria-hidden="true">

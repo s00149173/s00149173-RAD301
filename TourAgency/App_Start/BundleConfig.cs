@@ -9,7 +9,6 @@ namespace TourAgency
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Content/datepicker/js/bootstrap-datepicker.js",
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js"));
 
@@ -27,7 +26,6 @@ namespace TourAgency
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap/datepicker/css/datepicker.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap/bootstrap.css"));
 //            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
