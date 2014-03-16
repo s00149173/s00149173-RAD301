@@ -242,6 +242,13 @@
     <Content Include="Content\bootstrap\variables.less" />
     <Content Include="Content\datepicker\less\datepicker.less" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Images\false.png" />
+    <Content Include="Images\Trips\England.jpg" />
+    <Content Include="Images\Trips\France.jpg" />
+    <Content Include="Images\Trips\Ireland.jpg" />
+    <Content Include="Images\Trips\Portugal.jpg" />
+    <Content Include="Images\Trips\Spain.jpg" />
+    <Content Include="Images\true.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />

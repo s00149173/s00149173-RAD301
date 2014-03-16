@@ -25,6 +25,9 @@ namespace TourAgency.Models
         [Required(ErrorMessage = "The minimum number of guests is required!")]
         [Display(Name = "Minimum number of guests"), Range(3, int.MaxValue, ErrorMessage = "Please enter valid integer Number, bigger then 3")]
         public int MinimumguestN { get; set; }
+
+      
+        public string ImgUrl { get; set; }
         
         public bool Complete { get; set; }
         public bool Viable { get; set; }

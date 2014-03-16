@@ -32,12 +32,12 @@ namespace TourAgency.DAL
         {
             var trips = new List<Trip>
             {
-                new Trip{Name = "Discover Ireland", StartDate = new DateTime(2014,01,06), EndDate = new DateTime(2014,01,17), MinimumguestN = 6},
-                new Trip{Name = "Discover England", StartDate = new DateTime(2014,01,20), EndDate = new DateTime(2014,02,02), MinimumguestN = 6},
-                new Trip{Name = "Discover France part 1", StartDate = new DateTime(2014,05,19), EndDate = new DateTime(2014,06,16), MinimumguestN = 6},
-                new Trip{Name = "Discover Spain part 1", StartDate = new DateTime(2014,06,17), EndDate = new DateTime(2014,06,30), MinimumguestN = 6},
-                new Trip{Name = "Tomorrowland Madness 2014", StartDate = new DateTime(2014,07,01), EndDate = new DateTime(2014,08,04), MinimumguestN = 6},
-                new Trip{Name = "Discover Portugal", StartDate = new DateTime(2014,08,01), EndDate = new DateTime(2014,09,01), MinimumguestN = 6}
+                new Trip{Name = "Discover Ireland", StartDate = new DateTime(2014,01,06), EndDate = new DateTime(2014,01,17), MinimumguestN = 6, ImgUrl = "/../Images/Trips/Ireland.jpg"},
+                new Trip{Name = "Discover England", StartDate = new DateTime(2014,01,20), EndDate = new DateTime(2014,02,02), MinimumguestN = 6, ImgUrl = "/../Images/Trips/England.jpg"},
+                new Trip{Name = "Discover France part 1", StartDate = new DateTime(2014,05,19), EndDate = new DateTime(2014,06,16), MinimumguestN = 6, ImgUrl = "/../Images/Trips/France.jpg"},
+                new Trip{Name = "Discover Spain part 1", StartDate = new DateTime(2014,06,17), EndDate = new DateTime(2014,06,30), MinimumguestN = 6, ImgUrl = "/../Images/Trips/Spain.jpg"},
+                new Trip{Name = "Tomorrowland Madness 2014", StartDate = new DateTime(2014,07,01), EndDate = new DateTime(2014,08,04), MinimumguestN = 6, ImgUrl = "/../Images/Trips/Tomorrowland.jpg"},
+                new Trip{Name = "Discover Portugal", StartDate = new DateTime(2014,08,01), EndDate = new DateTime(2014,09,01), MinimumguestN = 6, ImgUrl = "/../Images/Trips/Portugal.jpg"},
             };
             trips.ForEach(t => context.Trips.Add(t));
             context.SaveChanges();
