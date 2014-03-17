@@ -14,7 +14,7 @@ namespace TourAgency.Models
         [Display(Name = "Trip Name"), StringLength(30, ErrorMessage = "Must be between {2} and {1} characters long.", MinimumLength = 5)]
         public string Name { get; set; }
 
-         [Required(ErrorMessage = "The start Date is required!")]
+        [Required(ErrorMessage = "The start Date is required!")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}"), Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
 

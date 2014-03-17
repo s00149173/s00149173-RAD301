@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - Tour Agency</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    
 
 </head>
 <body>
@@ -23,6 +24,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Trips", "Index", "Home")</li>
                     <li>@Html.ActionLink("Add Trip", "Create", "Home")</li>
+                    <li>@Html.ActionLink("Add Leg", "Create", "Leg")</li>
                 </ul>
             </div>
         </div>
@@ -34,23 +36,25 @@
     </div>
     <br />
     <div class="container body-content">
-        
+
         @RenderBody()
 
     </div>
-    <br/>
-    <br/>
+    <br />
+    <br />
     <div class="navbar navbar-inverse navbar-fixed-bottom">
-        <footer class =" container ">
-            <br/>
+        <footer class=" container ">
+            <br />
             <p>&copy; @DateTime.Now.Year - Tour Agency by Marco Leite</p>
         </footer>
-</div>
+    </div>
 
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
+

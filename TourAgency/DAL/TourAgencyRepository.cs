@@ -35,27 +35,33 @@ namespace TourAgency.DAL
 
         public IQueryable<Guest> GetGuestByLegID(int id)
         {
-            var guests = _ctx.GuestsOnLegs.Where(l=>l.LegId == id).Select(g=>g.guest);
+            var guests = _ctx.GuestsOnLegs.Where(l => l.LegId == id).Select(g => g.guest);
 
             return guests;
         }
 
-        public bool InsertTrip(Trip trip)
+        public void InsertTrip(Trip trip)
         {
-            bool result = false;
-            if (trip != null)
-            {
-                _ctx.Trips.Add(trip);
-                _ctx.SaveChanges();
-                result = true;
-            }
-
-            return result;
+            _ctx.Trips.Add(trip);
+            _ctx.SaveChanges();
         }
 
         public void Dispose()
         {
             _ctx.Dispose();
+        }
+
+
+        public void InsertLeg(Leg leg)
+        {
+            _ctx.Legs.Add(leg);
+            _ctx.SaveChanges();
+        }
+
+
+        public Trip GetTripByID(int id)
+        {
+            return _ctx.Trips.Find(id);
         }
     }
 }

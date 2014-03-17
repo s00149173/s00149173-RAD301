@@ -46,10 +46,6 @@ namespace TourAgency.Controllers
         {
             if (ModelState.IsValid)
             {
-                //if (_repo.InsertTrip(trip))
-                //{
-
-                //}
                 _repo.InsertTrip(trip);
                 return RedirectToAction("Index");
             }

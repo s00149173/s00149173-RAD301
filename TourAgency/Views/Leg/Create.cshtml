@@ -1,0 +1,114 @@
+﻿@model TourAgency.Models.Leg
+
+@{
+    ViewBag.Title = "Add Leg";
+}
+
+<link type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+@section Scripts {
+
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $("#startDate").datepicker({
+                dateFormat: 'dd/mm/yy',
+                showWeek: true,
+                defaultDate: "+1w",
+                changeMonth: true,
+                changeYear: true,
+                numberOfMonths: 2,
+                onClose: function (selectedDate) {
+                    $("#endDate").datepicker("option", "minDate", selectedDate);
+                }
+            });
+
+
+            $("#endDate").datepicker({
+                dateFormat: 'dd/mm/yy',
+                showWeek: true,
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 2,
+                onClose: function (selectedDate) {
+                    $("#startDate").datepicker("option", "maxDate", selectedDate);
+                }
+            });
+        });
+    </script>
+
+}
+
+
+<div class="col-md-offset-2 col-md-8 col-md-offset-2">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="thumbnail">
+            <div class="container-fluid">
+                <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1">
+                    <div class="row text-center">
+                        <h2>Create a new Leg</h2>
+                        <h4 class="label-danger">@ViewBag.ErrorMessage</h4>                       
+                    </div>
+
+                    <div class="row">
+                        <h3>@Html.DisplayNameFor(model => model.TripId)</h3>
+                    </div>
+                    <div class="row">
+                        @Html.DropDownList("TripId",
+                            new SelectList(ViewBag.Trips, "id", "name", ViewBag.Trips), "Select Trip", new { @class = "form-control" })
+                        @*@Html.EditorFor(model => model.TripId)*@
+                        @Html.ValidationMessageFor(model => model.TripId)
+                    </div>
+
+                    <div class="row">
+                        <h3>@Html.DisplayNameFor(model => model.StartLocation)</h3>
+                    </div>
+                    <div class="row">
+                        @Html.TextBoxFor(model => model.StartLocation, new { @class = "input-sm form-control", placeholder = "Start Location" })
+                        @Html.ValidationMessageFor(model => model.StartLocation)
+                    </div>
+
+                    <div class="row">
+                        <h3>@Html.DisplayNameFor(model => model.EndLocation)</h3>
+                    </div>
+                    <div class="row">
+                        @Html.TextBoxFor(model => model.EndLocation, new { @class = "input-sm form-control", placeholder = "End Location" })
+                        @Html.ValidationMessageFor(model => model.EndLocation)
+                    </div>
+
+                    <div class="row">
+                        <h3>@Html.DisplayNameFor(model => model.StartDate)</h3>
+                    </div>
+                    <div class="row">
+                        @Html.TextBoxFor(model => model.StartDate, new { @class = "input-sm form-control", id = "startDate", placeholder = "Start Date" })
+                        @Html.ValidationMessageFor(model => model.StartDate)
+                    </div>
+
+                    <div class="row">
+                        <h3>@Html.DisplayNameFor(model => model.EndDate)</h3>
+                    </div>
+                    <div class="row">
+                        @Html.TextBoxFor(model => model.EndDate, new { @class = "input-sm form-control", id = "endDate", placeholder = "End Date" })
+                        @Html.ValidationMessageFor(model => model.EndDate)
+                    </div>
+
+                    <br />
+                    <div class="row text-center">
+                        @Html.ActionLink("Back to List", "Index", "Home", null, new { @class = "btn btn-primary" })
+                        <input type="submit" class="btn btn-success" value="Create" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+
+</div>
+
