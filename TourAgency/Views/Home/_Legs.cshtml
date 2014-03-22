@@ -14,12 +14,7 @@
     </div>
 </div>
 <div id="legsList">
-
-
-
     <div class="list-group">
-
-
         @foreach (var item in Model)
         { 
             <a href="#" class="list-group-item" data-toggle="modal"  data-target="#GuestListModal" onclick="guestList('@item.LegId');" data-toggle="tooltip" title="Click to see the list of Guests">

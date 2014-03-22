@@ -23,7 +23,7 @@ namespace TourAgency.DAL
 
         public IQueryable<Leg> GetLegsByTripID(int id)
         {
-            return _ctx.Legs.Where(shit => shit.TripId == id);
+            return _ctx.Legs.Where(s => s.TripId == id);
         }
 
         public IQueryable<GuestsOnLegs> GetGuestOnLegsByLegID(int id)
@@ -62,6 +62,19 @@ namespace TourAgency.DAL
         public Trip GetTripByID(int id)
         {
             return _ctx.Trips.Find(id);
+        }
+
+        
+        public IQueryable<Guest> AllGuestsList()
+        {
+            return _ctx.Guests;
+        }
+
+
+        public void insertGuestOnLeg(GuestsOnLegs g)
+        {
+            _ctx.GuestsOnLegs.Add(g);
+            _ctx.SaveChanges();
         }
     }
 }

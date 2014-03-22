@@ -1,0 +1,33 @@
+﻿@using System.Data.SqlClient
+@model TourAgency.Models.GuestsOnLegs
+
+@section scripts
+{
+    <script>
+        function addGuestToLeg(GuestOnLeg, legID) {
+            $.ajax({
+                url: '@Url.Action("Create", "GuestsOnLegs")',
+                data: { guestsonlegs: GuestOnLeg },
+                success: function (data) {
+                    alert("yeaah");
+                }
+            });
+        }
+    </script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="col-md-offset-1 text-center">
+        @*@Html.DropDownList("GuestId",
+            new SelectList(@ViewBag.Guests, "GuestId", "Name", @ViewBag.Guests), "Select Guest", new { @class = "form-control" })*@
+        @Html.DropDownListFor(m => m.GuestId, new SelectList(@ViewBag.Guests, "GuestId", "Name", @ViewBag.Guests), "Select Guest", new { @class = "form-control" })
+        <br/>
+        <input class="btn btn-success" type="submit"  value="Add Guest to Leg" />
+    </div>
+ 
+}
+

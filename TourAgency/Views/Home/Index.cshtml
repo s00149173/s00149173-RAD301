@@ -46,48 +46,48 @@
 
     @foreach (var item in Model)
     {
-    <div class="thumbnail">
-        @*<div class="panel-heading">
+        <div class="thumbnail">
+            @*<div class="panel-heading">
             <h3 class="panel-title"></h3>
             <div class="painel-body">*@
-        <div class="row">
-            <div class="col-md-6">
-                <img src="@item.ImgUrl" style="width: 300px; height: 200px;" />
-            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="@item.ImgUrl" style="width: 300px; height: 200px;" />
+                </div>
 
-            <div class="col-md-6">
-                <h3><b>@Html.DisplayFor(modelItem => item.Name)</b></h3>
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>
-                            From: @Html.DisplayFor(modelItem => item.StartDate)
-                        </p>
-                        <p>
-                            To: @Html.DisplayFor(modelItem => item.EndDate)
-                        </p>
-                    </div>
-                    <div class="col-md-4">
-                        @if (item.Legs.Count > 0)
+                <div class="col-md-6">
+                    <h3><b>@Html.DisplayFor(modelItem => item.Name)</b></h3>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p>
+                                From: @Html.DisplayFor(modelItem => item.StartDate)
+                            </p>
+                            <p>
+                                To: @Html.DisplayFor(modelItem => item.EndDate)
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            @if (item.Legs.Count > 0)
                             {   
-                            <button class="btn btn-info btn-sm" onclick="showLegsList('@item.TripId');" style="cursor:pointer" data-toggle="tooltip" title="Click to see the list of Legs">
-                                Legs
+                                <button class="btn btn-info btn-sm" onclick="showLegsList('@item.TripId');" style="cursor:pointer" data-toggle="tooltip" title="Click to see the list of Legs">
+                                    Legs
                                     <span class="badge">@item.Legs.Count</span>
-                            </button>
+                                </button>
                         
                             }
                             else
                             {
-                            <div class="label label-danger">No Legs</div>
+                                <div class="label label-danger">No Legs</div>
                             }
+                        </div>
                     </div>
-                </div>
-                <div class="row col-md-11">
-                    <p>Minimum number of Guests: @Html.DisplayFor(modelItem => item.MinimumguestN)</p>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="row">
-                    <div class="col-md-6">
-                        Complete: 
+                    <div class="row col-md-11">
+                        <p>Minimum number of Guests: @Html.DisplayFor(modelItem => item.MinimumguestN)</p>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            Complete: 
                         @if (item.Complete)
                         {
                             <img src="~/Images/true.png" style="width: 20px; height: 20px;" />     
@@ -96,9 +96,9 @@
                         {
                             <img src="~/Images/false.png" style="width: 20px; height: 20px;" />
                         }
-                    </div>
-                    <div class="col-md-6">
-                        Viable: 
+                        </div>
+                        <div class="col-md-6">
+                            Viable: 
                         @if (item.Viable)
                         {
                             <img src="~/Images/true.png" style="width: 20px; height: 20px;" />     
@@ -107,7 +107,7 @@
                         {
                             <img src="~/Images/false.png" style="width: 20px; height: 20px;" />
                         }
-                        
+
                         </div>
                     </div>
 
@@ -116,14 +116,15 @@
             </div>
 
         </div>
-}
+    }
 
-                    </div>
+</div>
 
-                    <div class="col-md-5" id="rightPanel">
-                    </div>
+<div class="col-md-5" id="rightPanel">
+    @*<div id="rightPanel" style="position: fixed;"></div>*@
+</div>
 
 
 
-                    <div class="modal fade" id="GuestListModal" tabindex="-1" role="dialog" aria-labelledby="GuestListLabel" aria-hidden="true">
-                    </div>
+<div class="modal fade" id="GuestListModal" tabindex="-1" role="dialog" aria-labelledby="GuestListLabel" aria-hidden="true">
+</div>

@@ -157,6 +157,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GuestsOnLegsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LegController.cs" />
     <Compile Include="DAL\ITourAgencyRepository.cs" />
@@ -302,6 +303,7 @@
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Leg\Create.cshtml" />
+    <Content Include="Views\GuestsOnLegs\_Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,7 +326,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2118</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63333</IISUrl>
+          <IISUrl>http://localhost:63737</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

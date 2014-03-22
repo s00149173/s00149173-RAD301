@@ -24,6 +24,9 @@ namespace TourAgency.Controllers
 
         public ActionResult GuestList(int id)
         {
+            ViewBag.Guests = _repo.AllGuestsList();
+            
+            ViewBag.ExistingGuest = new GuestsOnLegs {LegId = id};
             var guests = _repo.GetGuestOnLegsByLegID(id);
             return View("_Guests", guests);
         }
