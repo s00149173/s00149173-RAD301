@@ -38,6 +38,7 @@
                     <div class="row text-center">
                         <h5>(Choose an option to add a Guest to this Leg)</h5>
                         <h4>@Ajax.ActionLink("Add Existing Guest", "Create", "GuestsOnLegs", new { legId = 1 }, new AjaxOptions { UpdateTargetId = "addGuest" })</h4>
+                        <h4>@Ajax.ActionLink("Add New Guest", "CreateGuest", "GuestsOnLegs", new { legId = 1 }, new AjaxOptions { UpdateTargetId = "addGuest" })</h4>
                         <div id="addGuest"></div>
                     </div>
                 </div>

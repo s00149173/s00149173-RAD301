@@ -17,6 +17,7 @@ namespace TourAgency.DAL
         void InsertLeg(Leg leg);
         IQueryable<Guest> AllGuestsList();
         void insertGuestOnLeg(GuestsOnLegs g);
+        void insertGuest(Guest g);
 
     }
 }

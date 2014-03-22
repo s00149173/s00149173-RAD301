@@ -304,6 +304,7 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Leg\Create.cshtml" />
     <Content Include="Views\GuestsOnLegs\_Create.cshtml" />
+    <Content Include="Views\GuestsOnLegs\_CreateGuest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -326,7 +327,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2118</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63737</IISUrl>
+          <IISUrl>http://localhost:33737</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

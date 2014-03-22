@@ -43,6 +43,26 @@ namespace TourAgency.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
+        public ActionResult CreateGuest(int legId)
+        {
+
+            ViewBag.LegId = legId;
+            return PartialView("_CreateGuest");
+        }
+
+        //
+        // POST: /GuestsOnLegs/Create
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateGuest(Guest guest, int legId)
+        {
+            _repo.insertGuest(guest);
+            _repo.insertGuestOnLeg(new GuestsOnLegs { GuestId = guest.GuestId, LegId = legId });
+            return RedirectToAction("Index", "Home");
+        }
+
         protected override void Dispose(bool disposing)
         {
             _repo.Dispose();

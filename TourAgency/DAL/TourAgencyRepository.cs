@@ -76,5 +76,12 @@ namespace TourAgency.DAL
             _ctx.GuestsOnLegs.Add(g);
             _ctx.SaveChanges();
         }
+
+
+        public void insertGuest(Guest g)
+        {
+            _ctx.Guests.Add(g);
+            _ctx.SaveChanges();
+        }
     }
 }

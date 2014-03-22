@@ -1,0 +1,46 @@
+﻿@model TourAgency.Models.Guest
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+   
+    <div class="col-md-offset-1 text-center">
+        <div class="row">
+            <input class="form-control" required type="text" name="Name" id="Name" placeholder="Guest Name" />
+            <h5 class="text-center">(The minimum size for the Guest Name is 3 Characters)</h5>
+            @*@Html.TextBoxFor(model => model.Name, new{@class="form-control", placeholder="Guest Name"})*@
+        </div>
+        
+         <script>
+             $(document).ready(function () {
+                 validate();
+                 $('#Name').change(validate);
+             });
+
+             function validate() {
+                 if ($('#Name').val().length > 2) {
+                     $("#submit").prop("disabled", false);
+                 }
+                 else {
+                     $("#submit").prop("disabled", true);
+                 }
+             }
+    </script>
+
+        @*@Html.TextBoxFor(model => model.Name, new { @class="required input", type="text", name="Name", id="Name"})*@
+        <br />
+        <input class="btn btn-success" type="submit" value="Add Guest" id="submit" disabled="disabled" />
+    </div>
+}
+
+
