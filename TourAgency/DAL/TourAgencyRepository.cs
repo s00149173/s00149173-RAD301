@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
+using Ninject.Infrastructure.Language;
 using TourAgency.DAL;
 using TourAgency.Models;
 
@@ -26,6 +28,7 @@ namespace TourAgency.DAL
             return _ctx.Legs.Where(s => s.TripId == id);
         }
 
+
         public IQueryable<GuestsOnLegs> GetGuestOnLegsByLegID(int id)
         {
             var guests = _ctx.GuestsOnLegs.Where(l => l.LegId == id);
@@ -39,6 +42,49 @@ namespace TourAgency.DAL
 
             return guests;
         }
+
+        public IQueryable<Leg> GetLegsByGuestID(int id)
+        {
+            var legs = _ctx.GuestsOnLegs.Where(g => g.GuestId == id).Select(l => l.leg);
+
+            return legs;
+        }
+
+        public List<GuestsOnLegs> GetAllGuestsOnLegsByTripId(int id)
+        {
+            var legs = GetLegsByTripID(id);
+            List<GuestsOnLegs> guests = new List<GuestsOnLegs>();
+            foreach (var leg in legs)
+            {
+                foreach (var g in leg.guestsOnLegs)
+                {
+                    guests.Add(g);
+                }
+            }
+            return guests;
+        }
+
+
+
+        public void UpdateTripViable(int tripId, bool viable)
+        {
+            var trip = GetTripByID(tripId);
+            trip.Viable = viable;
+            _ctx.Trips.Attach(trip);
+            _ctx.Entry(trip).State = EntityState.Modified;
+            _ctx.SaveChanges();
+
+        }
+
+        public void UpdateTripComplete(int tripId, bool complete)
+        {
+            var trip = GetTripByID(tripId);
+            trip.Complete = complete;
+            _ctx.Trips.Attach(trip);
+            _ctx.Entry(trip).State = EntityState.Modified;
+            _ctx.SaveChanges();
+        }
+
 
         public void InsertTrip(Trip trip)
         {

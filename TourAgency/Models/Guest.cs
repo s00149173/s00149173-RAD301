@@ -10,7 +10,7 @@ namespace TourAgency.Models
     {
         public int  GuestId {get; set;}
         [Required]
-        [Display(Name = "Guest Name"), StringLength(30, ErrorMessage = "Must be between {2} and {1} characters long.", MinimumLength = 5)]
+        [Display(Name = "Guest Name")]
         public string Name { get; set; }
         public virtual ICollection<GuestsOnLegs> guestsOnLegs { get; set; }
     }
