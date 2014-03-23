@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls.WebParts;
 using TourAgency.DAL;
 using TourAgency.Models;
 
@@ -26,12 +28,25 @@ namespace TourAgency.Controllers
                 CheckIfTripIsViable(trip.TripId);
                 CheckIfTripIsComplete(trip.TripId);
             }
-            return View(_repo.GetAllTrips().ToList());
+            trips = _repo.GetAllTrips().ToList();
+            //ViewBag.percentages = CalculatePercentages(trips);
+            //List<List<TripStatus>> per = CalculatePercentages(trips);
+            //per.First().Where(l=>l.tripId=)
+            ViewBag.tripId = 1;
+            
+        return View(trips);
+        }
+
+        public ActionResult Progressbar(int tripId)
+        {
+            var trip = _repo.GetTripByID(tripId);
+            int totalTripDays = (trip.EndDate - trip.StartDate).Days + 1;
+            List<TripStatus> statuses = CalcPercentagesTrip(totalTripDays, trip);
+            return PartialView("Progressbar",statuses);
         }
 
         private void CheckIfTripIsViable(int tripId)
         {
-            bool bla = false;
             int nGuestCount = 0;
             bool viable = false;
             var guests = _repo.GetAllGuestsOnLegsByTripId(tripId).OrderBy(g => g.GuestId);
@@ -49,9 +64,6 @@ namespace TourAgency.Controllers
                 }
                 if (timesThisGuest > 1)
                     nGuestCount++;
-
-                if (tripId == 2)
-                    bla = true;
 
                 if (nGuestCount >= 3)
                 {
@@ -75,13 +87,13 @@ namespace TourAgency.Controllers
                 {
                     start = l.EndDate.AddDays(1);
                     legs.Remove(l);
-                    if(legs.Count == 0)
+                    if (legs.Count == 0)
                         if (start == trip.EndDate.AddDays(1))
                             break;
                         else
                         {
                             complete = false;
-                            break;   
+                            break;
                         }
                 }
                 else
@@ -91,6 +103,69 @@ namespace TourAgency.Controllers
                 }
             }
             _repo.UpdateTripComplete(tripId, complete);
+        }
+
+        //private List<List<TripStatus>> CalculatePercentages(List<Trip> trips)
+        //{
+
+        //    List<List<TripStatus>> percentages = new List<List<TripStatus>>();
+        //    foreach (var trip in trips)
+        //    {
+        //        int totalTripDays = (trip.EndDate - trip.StartDate).Days + 1;
+        //        percentages.Add(CalcPercentagesTrip(totalTripDays, trip));
+        //    }
+        //    return percentages;
+        //}
+
+        private double percentage(int totalDays, int legDays)
+        {
+            return ((legDays * 100) / totalDays);
+        }
+
+        private List<TripStatus> CalcPercentagesTrip(int totalDays, Trip trip)
+        {
+            var legsOfTrip = _repo.GetLegsByTripID(trip.TripId).OrderBy(l => l.StartDate).ToList();
+            List<TripStatus> tripStatus = new List<TripStatus>();
+
+            //if trip does not have any legs it fits
+            if (!legsOfTrip.Any())
+            {
+                tripStatus.Add(new TripStatus { tripId = trip.TripId, isLeg = false, percentage = 100, days = totalDays });
+                return tripStatus;
+            }
+
+            DateTime date = trip.StartDate;
+            while (legsOfTrip.Count > 0)
+            {
+                var leg = legsOfTrip.First();
+                int auxLegDays = 0;
+
+                if (date < leg.StartDate)
+                {
+                    auxLegDays = (leg.StartDate - date).Days;
+                    Leg aux = new Leg{StartDate = date, EndDate = leg.StartDate.AddDays(-1)};
+                    tripStatus.Add(new TripStatus { tripId = trip.TripId, isLeg = false, percentage = percentage(totalDays, auxLegDays), days = auxLegDays, leg = aux});
+                }
+                auxLegDays = (leg.EndDate - leg.StartDate).Days + 1;
+                tripStatus.Add(new TripStatus { tripId = trip.TripId, isLeg = true, percentage = percentage(totalDays, auxLegDays), days = auxLegDays, leg = leg, nGuests = leg.guestsOnLegs.Count});
+                date = leg.EndDate.AddDays(1);
+                legsOfTrip.Remove(leg);
+                if (legsOfTrip.Count == 0)
+                {
+                    if (leg.EndDate != trip.EndDate)
+                    {
+                        if (leg.EndDate < trip.EndDate)
+                        {
+                            auxLegDays = (trip.EndDate - leg.EndDate).Days;
+                            Leg aux = new Leg { StartDate = leg.EndDate.AddDays(1), EndDate = trip.EndDate };
+                            tripStatus.Add(new TripStatus { tripId = trip.TripId, isLeg = false, percentage = percentage(totalDays, auxLegDays), days = auxLegDays, leg = aux });
+                        }
+                    }
+                }
+
+            }
+
+            return tripStatus;
         }
 
         public ActionResult LegsList(int id)

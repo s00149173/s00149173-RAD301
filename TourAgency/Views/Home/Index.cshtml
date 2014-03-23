@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TourAgency.Models.Trip>
+﻿@using TourAgency.Models
+@model IEnumerable<TourAgency.Models.Trip>
 
 @{
     ViewBag.Title = "Trips";
@@ -26,6 +27,17 @@
                 data: { id: tripId },
                 success: function (data) {
                     $('#rightPanel').html(data);
+
+                }
+            });
+        }
+
+        function showProgressbar(tripId) {
+            $.ajax({
+                url: '@Url.Action("Progressbar")',
+                data: { tripId: tripId },
+                success: function (data) {
+                    $('#' + tripId.toString()).html(data);
                 }
             });
         }
@@ -43,6 +55,12 @@
 }
 
 <div class="col-md-7">
+    <div class="row">
+    <div class="text-center">
+        <h3>(Click on a Trip to see the list of Guest and a progressbar)</h3>
+        <h4>(Pass your mouse on the progessbar and you will se more info)</h4>
+    </div>
+</div>
 
     @foreach (var item in Model)
     {
@@ -50,7 +68,10 @@
             @*<div class="panel-heading">
             <h3 class="panel-title"></h3>
             <div class="painel-body">*@
-            <div class="row">
+            <div class="row text-center" id="@item.TripId">
+                
+            </div>
+            <div class="row"  onclick="showLegsList('@item.TripId'); showProgressbar('@item.TripId');" style="cursor:pointer" data-toggle="tooltip" title="Click to see the list of Legs">
                 <div class="col-md-6">
                     <img src="@item.ImgUrl" style="width: 300px; height: 200px;" />
                 </div>
@@ -69,7 +90,9 @@
                         <div class="col-md-4">
                             @if (item.Legs.Count > 0)
                             {   
-                                <button class="btn btn-info btn-sm" onclick="showLegsList('@item.TripId');" style="cursor:pointer" data-toggle="tooltip" title="Click to see the list of Legs">
+                                
+                                <button class="btn btn-info btn-sm" >
+                                    @*onclick="showLegsList('@item.TripId'); showProgressbar('@item.TripId');" style="cursor:pointer" data-toggle="tooltip" title="Click to see the list of Legs"*@
                                     Legs
                                     <span class="badge">@item.Legs.Count</span>
                                 </button>
@@ -88,25 +111,25 @@
                     <div class="row">
                         <div class="col-md-6">
                             Complete: 
-                        @if (item.Complete)
-                        {
-                            <img src="~/Images/true.png" style="width: 20px; height: 20px;" />     
-                        }
-                        else
-                        {
-                            <img src="~/Images/false.png" style="width: 20px; height: 20px;" />
-                        }
+                            @if (item.Complete)
+                            {
+                                <img src="~/Images/true.png" style="width: 20px; height: 20px;" />     
+                            }
+                            else
+                            {
+                                <img src="~/Images/false.png" style="width: 20px; height: 20px;" />
+                            }
                         </div>
                         <div class="col-md-6">
                             Viable: 
-                        @if (item.Viable)
-                        {
-                            <img src="~/Images/true.png" style="width: 20px; height: 20px;" />     
-                        }
-                        else
-                        {
-                            <img src="~/Images/false.png" style="width: 20px; height: 20px;" />
-                        }
+                            @if (item.Viable)
+                            {
+                                <img src="~/Images/true.png" style="width: 20px; height: 20px;" />     
+                            }
+                            else
+                            {
+                                <img src="~/Images/false.png" style="width: 20px; height: 20px;" />
+                            }
 
                         </div>
                     </div>

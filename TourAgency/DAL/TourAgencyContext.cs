@@ -51,8 +51,8 @@ namespace TourAgency.DAL
                 //to be viable reaplace the start date to 2014,01,13
                 new Leg {StartLocation = "Antrim", EndLocation="Sligo", StartDate=new DateTime(2014,01,13), EndDate=new DateTime(2014,01,14), TripId=1},
                 new Leg {StartLocation = "Sligo", EndLocation="Glaway", StartDate=new DateTime(2014,01,15), EndDate=new DateTime(2014,01,15), TripId=1},
-                new Leg {StartLocation = "Galway", EndLocation="Cork", StartDate=new DateTime(2014,01,15), EndDate=new DateTime(2014,01,16), TripId=1},
-                new Leg {StartLocation = "Cork", EndLocation="Dublin", StartDate=new DateTime(2014,01,16), EndDate=new DateTime(2014,01,17), TripId=1},
+                new Leg {StartLocation = "Galway", EndLocation="Cork", StartDate=new DateTime(2014,01,16), EndDate=new DateTime(2014,01,16), TripId=1},
+                new Leg {StartLocation = "Cork", EndLocation="Dublin", StartDate=new DateTime(2014,01,17), EndDate=new DateTime(2014,01,17), TripId=1},
 
                 //trip 2
                 new Leg {StartLocation = "London", EndLocation="Northamptom", StartDate=new DateTime(2014,01,20), EndDate=new DateTime(2014,01,20), TripId=2},

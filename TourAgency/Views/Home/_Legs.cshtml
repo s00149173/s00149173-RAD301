@@ -8,12 +8,13 @@
     </script>
 }
 
+
 <div class="row">
     <div class="text-center">
         <h3>Click on a Leg to see the list of Guest</h3>
     </div>
 </div>
-<div id="legsList">
+<div>
     <div class="list-group">
         @foreach (var item in Model)
         { 
@@ -28,8 +29,8 @@
                         <h4 class="list-group-item-heading">From <b>@Html.DisplayFor(modelItem => item.StartLocation)</b> to <b>@Html.DisplayFor(modelItem => item.EndLocation)</b>.
                         </h4>
                         <p class="list-group-item-text">
-                            Begin: <b> @Html.DisplayFor(modelItem => item.StartDate) </b>
-                            End: <b> @Html.DisplayFor(modelItem => item.EndDate).</b>
+                            Begin: <b>@Html.DisplayFor(modelItem => item.StartDate) </b>
+                            End: <b>@Html.DisplayFor(modelItem => item.EndDate).</b>
                         </p>
                     </div>
                     <div class="col-md-4">

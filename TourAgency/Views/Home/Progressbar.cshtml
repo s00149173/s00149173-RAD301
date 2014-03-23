@@ -1,0 +1,38 @@
+﻿@using TourAgency.Models
+@model List<TourAgency.Models.TripStatus>
+
+<div class="container-fluid">
+
+    <div class="progress">
+        @foreach (var item in Model)
+        {
+            if (item.isLeg)
+            {
+                <div class="progress-bar progress-bar-success" style="width: @item.percentage%" 
+                    style="cursor:pointer" data-toggle="tooltip" title=" From @item.leg.StartLocation to  @item.leg.EndLocation" >
+                <h8 >@item.nGuests G</h8>
+            </div>
+        
+            }
+            else
+            {
+            <div class="progress-bar progress-bar-danger" style="width: @item.percentage%"style="width: @item.percentage%" 
+                 style="cursor:pointer" data-toggle="tooltip" title="Gap - @item.leg.StartDate.ToShortDateString() -> @item.leg.EndDate.ToShortDateString() " >
+                <h8>Free</h8>
+            </div>
+            }
+
+
+        }
+        @*<div class="progress-bar progress-bar-success" style="width: 35%">
+                            <h8>leg xxx</h8>
+                            <span class="sr-only">35% Complete (success)</span>
+                        </div>
+                        <div class="progress-bar progress-bar-warning" style="width: 20%">
+                            <span class="sr-only">20% Complete (warning)</span>
+                        </div>
+                        <div class="progress-bar progress-bar-danger" style="width: 10%">
+                            <span class="sr-only">10% Complete (danger)</span>
+                        </div>*@
+    </div>
+</div>
